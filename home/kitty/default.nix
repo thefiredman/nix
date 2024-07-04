@@ -1,20 +1,17 @@
 { config, lib, pkgs, ... }: {
-  options.h = {
-    kitty.enable = lib.mkEnableOption "Enable kitty.";
-  };
+  options.h = { kitty.enable = lib.mkEnableOption "Enable kitty."; };
 
   config = lib.mkIf config.h.kitty.enable {
     home-manager.users.${config.h.username} = {
       programs.kitty = {
         enable = true;
         font = {
-          name = "CaskaydiaCove NF";
+          name = "CaskaydiaCove Nerd Font Mono";
           size = 30;
         };
         theme = "Gruvbox Dark Hard";
-        darwinLaunchOptions = [
-          "--single-instance"
-        ];
+        # theme = "Modus Vivendi";
+        darwinLaunchOptions = [ "--single-instance" ];
         shellIntegration = {
           enableFishIntegration = false;
           enableZshIntegration = false;
@@ -31,15 +28,19 @@
           "cmd+v" = "paste_from_clipboard";
         };
         settings = {
-          # super important!
           clear_all_shortcuts = "yes";
+          single_window_padding_width = "-1";
+          window_padding_width = "3";
+          background = "#000000";
+          background_opacity = "0.87";
+          background_blur = "20";
           shell = "${pkgs.fish}/bin/fish";
           macos_option_as_alt = "yes";
           cursor_shape = "block";
           copy_on_select = "yes";
           shell_integration = "disabled";
           cursor_blink_interval = 0;
-          hide_window_decorations = "no";
+          hide_window_decorations = "titlebar-only";
           confirm_os_window_close = 0;
           update_check_interval = 0;
           enable_audio_bell = "no";

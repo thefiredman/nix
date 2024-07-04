@@ -1,18 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  options.h = {
-    lsd.enable = lib.mkEnableOption "Enable lsd.";
-  };
+{ config, lib, pkgs, ... }: {
+  options.h = { lsd.enable = lib.mkEnableOption "Enable lsd."; };
 
   config = lib.mkIf config.h.lsd.enable {
     home-manager.users.${config.h.username} = {
-      home.shellAliases = {
-        s = "${pkgs.lsd}/bin/lsd -lA";
-      };
+      home.shellAliases = { s = "${pkgs.lsd}/bin/lsd -lA"; };
 
       programs.lsd = {
         enable = true;

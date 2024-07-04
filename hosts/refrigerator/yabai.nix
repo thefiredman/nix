@@ -1,12 +1,16 @@
-{ ... }:
-{
+_: {
   services.yabai = {
     enable = true;
     config = {
       layout = "bsp";
-      mouse_modifier = "alt";
+      # mouse_modifier    = "alt";
       mouse_action1 = "move";
       mouse_action2 = "resize";
+      top_padding = 16;
+      bottom_padding = 16;
+      left_padding = 16;
+      right_padding = 16;
+      window_gap = 8;
     };
     enableScriptingAddition = true;
     extraConfig = ''
@@ -22,10 +26,10 @@
       yabai -m rule --add title='Archive Utility' manage=off
       yabai -m rule --add label="Calculator" app="Calculator" manage=off
       yabai -m rule --add app="Messages" manage=off
-      yabai -m rule --add app="Infuse" manage=off
       yabai -m rule --add app="^da" manage=off
       yabai -m rule --add app="Mail" manage=off
       yabai -m rule --add app="Dictionary" manage=off
+      yabai -m rule --add app="QuickTime Player" manage=off
       yabai -m rule --add app="App Store" manage=off
       yabai -m rule --add app="Weather" manage=off
       yabai -m rule --add app="Mullvad VPN" manage=off sticky=off layer=above

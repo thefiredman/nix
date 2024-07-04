@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, config, ... }: {
   security.pki.installCACerts = false;
 
   imports = [
@@ -11,9 +10,8 @@
   ];
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" "Noto" ]; })
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "CascadiaCode" "IosevkaTerm" ]; })
       lato
       ibm-plex
     ];
@@ -21,16 +19,12 @@
 
   system = {
     defaults = {
-      CustomSystemPreferences = {
-      };
+      CustomSystemPreferences = { };
       CustomUserPreferences = {
         "com.apple.WindowManager" = {
           StageManagerHideWidgets = 1;
           StandardHideWidgets = 0;
         };
-        #"com.apple.wallpaper" = {
-        #SystemWallpaperURL = "file:///${builtins.toString ./.}/wallpapers/m.jpg";
-        #};
       };
       LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
@@ -44,7 +38,7 @@
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
         NSAutomaticWindowAnimationsEnabled = false;
-        NSDocumentSaveNewDocumentsToCloud  = false;
+        NSDocumentSaveNewDocumentsToCloud = false;
         AppleTemperatureUnit = "Celsius";
 
         # 120, 90, 60, 30, 12, 6, 2
@@ -55,9 +49,7 @@
         "com.apple.swipescrolldirection" = false;
       };
 
-      spaces = {
-        spans-displays = false;
-      };
+      spaces = { spans-displays = false; };
 
       trackpad = {
         Clicking = true;
@@ -72,8 +64,7 @@
         autohide-time-modifier = 0.1;
         autohide-delay = 0.0;
         persistent-apps = [
-          # "/Applications/Safari.app"
-          "/Applications/Arc.app"
+          "/Applications/Safari.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Messages.app/"
           "/Applications/Tidal.app"
@@ -104,7 +95,7 @@
         GuestEnabled = false;
       };
       screencapture = {
-        location = "~/Pictures/Screenshots";
+        location = "${config.h.homePath}/Pictures/Screenshots";
       };
     };
     keyboard = {

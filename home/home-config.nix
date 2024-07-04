@@ -1,7 +1,5 @@
-{ config, ... }:
-{
-  options = {
-  };
+{ config, ... }: {
+  options = { };
 
   config = {
     # xdg.configHome wasn't working...

@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{ config, ... }: {
   home-manager.users.${config.h.username} = {
     programs.fd = {
       enable = true;

@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-{
+{ config, lib, pkgs, ... }: {
   imports = [
     # VITAL
     ./home-config.nix
@@ -14,11 +13,13 @@
     ./lsd
     ./scripts
     {
-      h.kitty.enable = lib.mkDefault true;
-      h.fish.enable = lib.mkDefault true;
-      h.lsd.enable = lib.mkDefault true;
-      h.git.enable = lib.mkDefault true;
-      h.tmux.enable = lib.mkDefault true;
+      h = {
+        kitty.enable = lib.mkDefault true;
+        fish.enable = lib.mkDefault true;
+        lsd.enable = lib.mkDefault true;
+        git.enable = lib.mkDefault true;
+        tmux.enable = lib.mkDefault true;
+      };
     }
   ];
 
@@ -35,20 +36,14 @@
 
   home-manager.users.${config.h.username} = {
     programs = {
-      nix-index = {
-        enable = false;
-      };
+      nix-index = { enable = false; };
       fzf = {
         enable = true;
         tmux.enableShellIntegration = false;
         enableFishIntegration = false;
         enableBashIntegration = false;
         enableZshIntegration = false;
-        defaultOptions = [
-          "--height 100%"
-          "--layout=reverse"
-          "--exact"
-        ];
+        defaultOptions = [ "--height 100%" "--layout=reverse" "--exact" ];
       };
     };
 
@@ -60,11 +55,7 @@
 
     home = {
       stateVersion = "24.05";
-      sessionVariables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-        SHELL = "${pkgs.fish}/bin/fish";
-      };
+      sessionVariables = { SHELL = "${pkgs.fish}/bin/fish"; };
     };
   };
 }

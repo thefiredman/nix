@@ -4,7 +4,6 @@
       dash
       tracy
       bat
-      imagemagick
       hyperfine
 
       ## INFO
@@ -24,9 +23,7 @@
     shells = [ pkgs.dash ];
     loginShell = pkgs.dash;
 
-    variables = {
-      SHELL = "${pkgs.dash}/bin/dash";
-    };
+    variables = { SHELL = "${pkgs.dash}/bin/dash"; };
   };
 
   home-manager.users.${config.h.username} = {

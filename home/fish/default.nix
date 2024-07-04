@@ -1,17 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  options.h = {
-    fish.enable = lib.mkEnableOption "Enable fish.";
-  };
+{ config, lib, pkgs, ... }: {
+  options.h = { fish.enable = lib.mkEnableOption "Enable fish."; };
 
   config = lib.mkIf config.h.fish.enable {
-    programs.fish = {
-      enable = true;
-    };
+    programs.fish = { enable = true; };
 
     home-manager.users.${config.h.username} = {
       xdg.configFile = {
@@ -42,16 +33,12 @@
         };
         plugins = [
           {
-            name = "sponge";
-            src = pkgs.fishPlugins.sponge.src;
-          }
-          {
             name = "autopair";
-            src = pkgs.fishPlugins.autopair.src;
+            inherit (pkgs.fishPlugins.autopair) src;
           }
           {
             name = "puffer";
-            src = pkgs.fishPlugins.puffer.src;
+            inherit (pkgs.fishPlugins.puffer) src;
           }
         ];
       };

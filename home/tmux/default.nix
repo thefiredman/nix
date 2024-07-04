@@ -1,16 +1,8 @@
-{
-  config,
-  lib,
-  pkgs, ...
-}: {
-  options.h = {
-    tmux.enable = lib.mkEnableOption "Enable tmux.";
-  };
+{ config, lib, pkgs, ... }: {
+  options.h = { tmux.enable = lib.mkEnableOption "Enable tmux."; };
 
   config = lib.mkIf config.h.tmux.enable {
-    environment.systemPackages = with pkgs; [
-      tmux-sessionizer
-    ];
+    environment.systemPackages = with pkgs; [ tmux-sessionizer ];
 
     home-manager.users.${config.h.username} = {
       xdg.configFile = {
@@ -26,6 +18,9 @@
           [[search_dirs]]
           path = "${config.h.homePath}/${config.h.devHome}/"
           depth = 20
+
+          [[excluded_dirs]]
+          path = ".direnv"
         '';
       };
 
@@ -40,10 +35,7 @@
         disableConfirmationPrompt = true;
         customPaneNavigationAndResize = true;
         extraConfig = builtins.readFile ./tmux.conf;
-        plugins = with pkgs.tmuxPlugins; [
-          yank
-          vim-tmux-navigator
-        ];
+        plugins = with pkgs.tmuxPlugins; [ yank vim-tmux-navigator ];
       };
     };
   };

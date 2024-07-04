@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   options = {
     h = {
       username = lib.mkOption {
@@ -56,7 +55,8 @@
       };
       homeRoot = lib.mkOption {
         type = with lib.types; str;
-        description = "Your systems root home path. Must be defined explicitly.";
+        description =
+          "Your systems root home path. Must be defined explicitly.";
       };
     };
   };

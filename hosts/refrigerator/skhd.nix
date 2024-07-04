@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-{
+{ pkgs, config, ... }: {
   services.skhd = {
     enable = true;
-    skhdConfig  = ''
+    skhdConfig = ''
       alt - h : yabai -m window --focus west
       alt - j : yabai -m window --focus south
       alt - k : yabai -m window --focus north
@@ -33,16 +32,16 @@
       alt + shift - 0 : yabai -m window --space 10
 
       # swap windows
-      alt - left : yabai -m window --swap west
-      alt - right : yabai -m window --swap east
-      alt - up : yabai -m window --swap north
-      alt - down : yabai -m window --swap south
+      alt - left      : yabai -m window --swap west
+      alt - right     : yabai -m window --swap east
+      alt - up        : yabai -m window --swap north
+      alt - down      : yabai -m window --swap south
 
       # spawn
-      alt - return : ${pkgs.kitty}/bin/kitty --single-instance -d ~
-      alt - m : music-play
-      alt - b : list-bookmarks
-      alt + shift- b : mk-bookmark
+      alt - return    : ${pkgs.kitty}/bin/kitty --single-instance -d ${config.h.homePath}
+      alt - m         : music-play
+      alt - b         : list-bookmarks
+      alt + shift - b : mk-bookmark
 
       # resize
       shift + alt - h : yabai -m window --resize left:-50:0; yabai -m window --resize right:-50:0
@@ -52,7 +51,6 @@
 
       # other
       shift + alt - f : yabai -m window --toggle native-fullscreen
-      alt - q         : yabai -m window --close
       cmd - q         : yabai -m window --close
       alt - s         : yabai -m window --toggle float
       alt - m         : music-play

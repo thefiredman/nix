@@ -1,19 +1,13 @@
 {
   description = "Shalev's blood.";
 
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
-      imports = [
-        ./hosts
-        ./systems
-      ];
-    };
+      systems = [ "aarch64-darwin" "x86_64-linux" ];
+      imports = [ ./hosts ./systems ];
 
+      perSystem = { };
+    };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
