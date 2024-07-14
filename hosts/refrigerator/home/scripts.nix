@@ -1,22 +1,25 @@
-{ pkgs, config, ... }: {
-  environment.systemPackages = with pkgs; [
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [
     (writeShellApplication {
-      name = "yonk";
-
-      runtimeInputs = [ git ];
+      name = "music-player";
 
       text = ''
-        git clone --recurse-submodules "git@github.com:$1.git"
+        case "$1" in
+          r)
+            osascript -e 'tell app "Music" to playpause'
+            ;;
+          n)
+            osascript -e 'tell app "Music" to play next track'
+            ;;
+          p)
+            osascript -e 'tell app "Music" to back track'
+            ;;
+          *)
+            ;;
+        esac
       '';
     })
-    (writeShellApplication {
-      name = "yt-mp3";
-      runtimeInputs = [ yt-dlp ];
 
-      text = ''
-        yt-dlp --audio-quality 0 --extract-audio --audio-format mp3 "$1"
-      '';
-    })
     (writeShellScriptBin "list-bookmarks" ''
       touch ${config.h.dataHome}/bookmarks
       cat ${config.h.dataHome}/bookmarks | /opt/homebrew/bin/choose | pbcopy || exit 1
@@ -24,6 +27,7 @@
       sleep 0.1
       osascript -e 'tell application "System Events" to key code 36'
     '')
+
     (writeShellScriptBin "mk-bookmark" ''
       touch ${config.h.dataHome}/bookmarks
       pbpaste >> ${config.h.dataHome}/bookmarks

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
   services.skhd = {
     enable = true;
     skhdConfig = ''
@@ -38,8 +38,10 @@
       alt - down      : yabai -m window --swap south
 
       # spawn
-      alt - return    : ${pkgs.kitty}/bin/kitty --single-instance -d ${config.h.homePath}
-      alt - m         : music-play
+      alt - return    : ${pkgs.kitty}/bin/kitty --single-instance -d ~
+      alt - m         : music-player r
+      alt + shift - n : music-player n
+      alt + shift - p : music-player p
       alt - b         : list-bookmarks
       alt + shift - b : mk-bookmark
 
@@ -53,7 +55,6 @@
       shift + alt - f : yabai -m window --toggle native-fullscreen
       cmd - q         : yabai -m window --close
       alt - s         : yabai -m window --toggle float
-      alt - m         : music-play
     '';
   };
 }

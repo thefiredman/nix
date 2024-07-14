@@ -1,22 +1,24 @@
 { inputs, ... }:
 
 let
-  inextricables = with inputs.self.nixosModules; [ options darwin nixsys ];
+  inextricables = with inputs.self.nixosModules; [
+    nixsys
+    darwin
+  ];
 
   macGenesis = args:
     (inputs.nix-darwin.lib.darwinSystem
-      ((builtins.removeAttrs args [ "hostName" ]) // {
+      ((builtins.removeAttrs args [ "hostName" "userName" ]) // {
+        system = "aarch64-darwin";
         specialArgs = { inherit inputs; } // args.specialArgs or { };
         modules = (args.modules or [ ]) ++ [
           inputs.home-manager.darwinModules.home-manager
-          ../home
+          ./home-manager.nix
           {
-            sys = {
-              host = "${args.hostName}";
-              system = "${args.system}";
-              darwin.enable = true;
-              nix.enable = true;
-            };
+            host = "${args.hostName}";
+            architecture = "${args.system}";
+            modules = { darwin.enable = true; };
+            userName = "${args.userName}";
           }
         ] ++ inextricables;
       }));
@@ -24,10 +26,9 @@ in {
   flake = {
     darwinConfigurations = {
       refrigerator = macGenesis {
-        system = "aarch64-darwin";
         hostName = "refrigerator";
-        modules =
-          [ ./refrigerator { config.h.shell.prefix_colour = "magenta"; } ];
+        userName = "shalev";
+        modules = [ ./refrigerator { } ];
       };
     };
 

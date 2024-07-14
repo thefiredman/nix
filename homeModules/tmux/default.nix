@@ -1,0 +1,41 @@
+{ config, lib, pkgs, ... }: {
+  options.h.tmux = {
+    enable = lib.mkEnableOption "Enable tmux." // { default = true; };
+  };
+
+  config = lib.mkIf config.h.tmux.enable {
+    home.packages = with pkgs; [ tmux-sessionizer ];
+    xdg.configFile = {
+      "tms/config.toml".text = ''
+        [[search_dirs]]
+        path = "${config.h.configHome}/"
+        depth = 5
+
+        [[search_dirs]]
+        path = "${config.h.homePath}/nix/"
+        depth = 2
+
+        [[search_dirs]]
+        path = "${config.h.homePath}/dev/"
+        depth = 20
+
+        [[excluded_dirs]]
+        path = ".direnv"
+      '';
+    };
+
+    programs.tmux = {
+      enable = true;
+      keyMode = "vi";
+      terminal = "screen-256color";
+      mouse = true;
+      prefix = "C-b";
+      sensibleOnTop = false;
+      baseIndex = 1;
+      disableConfirmationPrompt = true;
+      customPaneNavigationAndResize = true;
+      extraConfig = builtins.readFile ./tmux.conf;
+      plugins = with pkgs.tmuxPlugins; [ yank vim-tmux-navigator ];
+    };
+  };
+}

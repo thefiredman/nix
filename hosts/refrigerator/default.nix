@@ -1,17 +1,12 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
   security.pki.installCACerts = false;
 
-  imports = [
-    # specific stuff for this computer
-    ./yabai.nix
-    ./skhd.nix
-    ./apps.nix
-    ./scripts.nix
-  ];
+  imports = [ ./home ./yabai.nix ./skhd.nix ./apps.nix ];
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "CascadiaCode" "IosevkaTerm" ]; })
+      # NOTE: IosevkaTerm
+      (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       lato
       ibm-plex
     ];
@@ -26,6 +21,7 @@
           StandardHideWidgets = 0;
         };
       };
+
       LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
         # https://github.com/LnL7/nix-darwin/blob/230a197063de9287128e2c68a7a4b0cd7d0b50a7/modules/system/defaults/NSGlobalDomain.nix
@@ -67,7 +63,7 @@
           "/Applications/Safari.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Messages.app/"
-          "/Applications/Tidal.app"
+          "/System/Applications/Music.app"
           "/Applications/Infuse.app"
         ];
         show-process-indicators = false;
@@ -84,20 +80,20 @@
         enable-spring-load-actions-on-all-items = false;
         dashboard-in-overlay = false;
       };
+
       finder = {
         # required for yabai
         CreateDesktop = true;
         FXPreferredViewStyle = "clmv";
         FXEnableExtensionChangeWarning = false;
       };
+
       loginwindow = {
         LoginwindowText = "yo momma gay";
         GuestEnabled = false;
       };
-      screencapture = {
-        location = "${config.h.homePath}/Pictures/Screenshots";
-      };
     };
+
     keyboard = {
       enableKeyMapping = true;
       swapLeftCommandAndLeftAlt = false;

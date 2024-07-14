@@ -1,4 +1,4 @@
-_: {
+{
   homebrew = {
     onActivation = {
       cleanup = "zap";
@@ -8,7 +8,6 @@ _: {
     brews = [ "choose-gui" ];
     enable = true;
     casks = [
-      "tidal"
       "mullvadvpn"
       "prismlauncher"
       "krita"
@@ -25,7 +24,6 @@ _: {
       "affinity-publisher"
       "blender"
       "qbittorrent"
-      "discord"
       "wacom-tablet"
     ];
   };

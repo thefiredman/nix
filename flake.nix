@@ -4,8 +4,8 @@
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" "x86_64-linux" ];
-      imports = [ ./hosts ./systems ];
-
+      imports =
+        [ ./hosts ./nixosModules ./homeModules ];
       perSystem = { };
     };
 
