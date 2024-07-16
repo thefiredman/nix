@@ -28,12 +28,12 @@
 
       colour = lib.mkOption {
         type = with lib.types; str;
-        description = "Your shell color.";
+        description = "The shells color.";
       };
 
       icon = lib.mkOption {
         type = with lib.types; str;
-        description = "Your shell's icon.";
+        description = "The shells icon.";
       };
     };
   };
@@ -70,6 +70,7 @@
         fastfetch
         btop
         htop
+        dysk
 
         ## UTIL
         tree

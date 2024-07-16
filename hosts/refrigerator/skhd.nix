@@ -42,8 +42,7 @@
       alt - m         : music-player r
       alt + shift - n : music-player n
       alt + shift - p : music-player p
-      alt - b         : list-bookmarks
-      alt + shift - b : mk-bookmark
+      # alt + shift - b : mk-bookmark
 
       # resize
       shift + alt - h : yabai -m window --resize left:-50:0; yabai -m window --resize right:-50:0

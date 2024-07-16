@@ -1,7 +1,9 @@
 { config, lib, ... }: {
 
   options.h.kitty = {
-    enable = lib.mkEnableOption "Enables kitty terminal." // { default = true; };
+    enable = lib.mkEnableOption "Enables kitty terminal." // {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.h.kitty.enable {
@@ -31,8 +33,9 @@
       settings = {
         clear_all_shortcuts = "yes";
         window_padding_width = "3";
-        shell =
-          "${lib.getBin config.h.shell.package}/bin/${lib.getName config.h.shell.package}";
+        shell = "${lib.getBin config.h.shell.package}/bin/${
+            lib.getName config.h.shell.package
+          }";
         background = "#000000";
         background_opacity = "0.87";
         background_blur = "20";

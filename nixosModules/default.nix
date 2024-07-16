@@ -1,6 +1,6 @@
 {
   flake.nixosModules = {
-    nixsys = import ./nixsys.nix;
-    darwin = import ./darwin;
+    global = import ./global.nix;
+    darwin = import ./darwin.nix;
   };
 }
