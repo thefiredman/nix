@@ -1,13 +1,11 @@
-{ withSystem, darwinGenesis, homeGenesis, ... }:
-let system = "aarch64-darwin";
-in {
-  flake.darwinConfigurations.refrigerator = withSystem system (_:
-    darwinGenesis system "refrigerator"  [
+{ darwinGenesis, homeGenesis, ... }: {
+  flake.darwinConfigurations.refrigerator =
+    darwinGenesis "aarch64-darwin" "refrigerator" [
       ./configuration.nix
       ./scripts.nix
-      ./apps.nix
+      ./homebrew.nix
       ./yabai.nix
       ./skhd.nix
-      (homeGenesis "shalev" "Users" [ ./users/shalev ])
-    ]);
+      (homeGenesis "shalev" "Users" [ ./home ])
+    ];
 }

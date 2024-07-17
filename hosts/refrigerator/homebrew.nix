@@ -15,7 +15,6 @@
       "tg-pro"
       "parsec"
       "firefox"
-      "godot"
       "figma"
       "obs"
       "zed"

@@ -1,6 +1,11 @@
 { pkgs, ... }: {
   security.pki.installCACerts = false;
 
+  environment = {
+    shells = [ pkgs.fish ];
+    loginShell = pkgs.fish;
+  };
+
   fonts = {
     packages = with pkgs; [
       # NOTE: IosevkaTerm
