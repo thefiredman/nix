@@ -7,6 +7,8 @@
     home.packages = with pkgs; [ tmux-sessionizer ];
     xdg.configFile = {
       "tms/config.toml".text = ''
+        excluded_dirs = [".direnv"]
+
         [[search_dirs]]
         path = "${config.h.configHome}/"
         depth = 5
@@ -18,9 +20,6 @@
         [[search_dirs]]
         path = "${config.h.homePath}/dev/"
         depth = 20
-
-        [[excluded_dirs]]
-        path = ".direnv"
       '';
     };
 

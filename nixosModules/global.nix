@@ -24,7 +24,7 @@
       };
     };
 
-    networking = { hostName = config.genesis.hostName; };
+    networking = { inherit (config.genesis) hostName; };
 
     environment.shellAliases = { update = "nix flake update ~/nix"; };
 

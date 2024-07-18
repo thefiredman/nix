@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+{
   options.h.dev = {
     enable = lib.mkEnableOption "Enable development tools." // {
       default = true;

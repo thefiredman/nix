@@ -61,9 +61,10 @@
 
     home = {
       packages = with pkgs; [
-        dash
-        bat
-        hyperfine
+        ## NOT MEMES
+        asciiquarium-transparent
+        nyancat
+        cmatrix
 
         ## INFO
         onefetch
@@ -71,6 +72,8 @@
         btop
         htop
         dysk
+        bat
+        hyperfine
 
         ## UTIL
         tree
@@ -85,6 +88,7 @@
         vi = "nvim";
         tree = "tree -C";
         cleanup = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+        asciiquarium = "asciiquarium -t";
       };
     };
   };
