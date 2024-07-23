@@ -4,7 +4,6 @@
       ./configuration.nix
       ./scripts.nix
       ./homebrew.nix
-      ./yabai.nix
       ./skhd.nix
       (homeGenesis "shalev" "Users" [ ./home ])
     ];

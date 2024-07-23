@@ -2,10 +2,8 @@
   config.h = {
     shell = {
       package = pkgs.fish;
-      colour = "magenta";
-      icon = "🍺";
+      colour = "pink";
+      icon = "🍅";
     };
-
-    kitty.enable = true;
   };
 }

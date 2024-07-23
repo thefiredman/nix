@@ -1,8 +1,7 @@
 { config, lib, ... }: {
-
   options.h.kitty = {
     enable = lib.mkEnableOption "Enables kitty terminal." // {
-      default = true;
+      default = false;
     };
   };
 
@@ -20,18 +19,8 @@
         enableZshIntegration = false;
         enableBashIntegration = false;
       };
-      keybindings = {
-        "ctrl+equal" = "change_font_size all +2.0";
-        "ctrl+minus" = "change_font_size all -2.0";
-        "cmd+equal" = "change_font_size all +2.0";
-        "cmd+minus" = "change_font_size all -2.0";
-        "ctrl+shift+c" = "copy_to_clipboard";
-        "cmd+p" = "copy_to_clipboard";
-        "ctrl+shift+v" = "paste_from_clipboard";
-        "cmd+v" = "paste_from_clipboard";
-      };
       settings = {
-        clear_all_shortcuts = "yes";
+        clear_all_shortcuts = "no";
         window_padding_width = "3";
         shell = "${lib.getBin config.h.shell.package}/bin/${
             lib.getName config.h.shell.package
@@ -44,7 +33,8 @@
         copy_on_select = "yes";
         shell_integration = "disabled";
         cursor_blink_interval = 0;
-        hide_window_decorations = "titlebar-only";
+        hide_window_decorations = "no";
+        # hide_window_decorations = "titlebar-only";
         confirm_os_window_close = 0;
         update_check_interval = 0;
         enable_audio_bell = "no";

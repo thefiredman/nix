@@ -15,23 +15,29 @@
               hostName = "${hostName}";
             };
           }
+
           inputs.home-manager.darwinModules.home-manager
           inputs.self.nixosModules.global
           inputs.self.nixosModules.darwin
         ] ++ extraModules;
       };
 
-    linuxGenesis = architecture: extraModules:
+    linuxGenesis = architecture: hostName: extraModules:
       let
         specialArgs = withSystem architecture
           ({ inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
-          { nixpkgs.hostPlatform = architecture; }
           inputs.home-manager.nixosModules.home-manager
-          { home-manager.extraSpecialArgs = architecture; }
-          { genesis.architecture = "${architecture}"; }
+          {
+            nixpkgs.hostPlatform = architecture;
+            home-manager.extraSpecialArgs = architecture;
+            genesis = {
+              architecture = "${architecture}";
+              hostName = "${hostName}";
+            };
+          }
 
           inputs.self.nixosModules.global
         ] ++ extraModules;

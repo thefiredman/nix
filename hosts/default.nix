@@ -1,1 +1,1 @@
-{ imports = [ ./genesis.nix ./refrigerator ]; }
+{ imports = [ ./genesis.nix ./devbox ./refrigerator ]; }

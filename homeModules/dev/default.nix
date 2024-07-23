@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   options.h.dev = {
     enable = lib.mkEnableOption "Enable development tools." // {
       default = true;
@@ -28,7 +27,7 @@
     };
 
     home = {
-      sessionVariables = {
+      sessionVariables = with pkgs; {
         SHELL = "${lib.getBin config.h.shell.package}/bin/${
             lib.getName config.h.shell.package
           }";
@@ -37,6 +36,8 @@
         NPM_CONFIG_USERCONFIG = "${config.h.configHome}/npm/config";
         CARGO_HOME = "${config.h.dataHome}/cargo";
         LESSHISTFILE = "/dev/null";
+        JDK17 = jdk17;
+        JDK21 = jdk21;
       };
 
       packages = with pkgs; [
@@ -49,7 +50,6 @@
         nodePackages_latest.npm
         nodejs
         go
-        jdk21
 
         # basic compilers for nvim
         gcc
