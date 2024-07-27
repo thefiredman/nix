@@ -21,7 +21,7 @@
       CustomUserPreferences = {
         "com.apple.WindowManager" = {
           StageManagerHideWidgets = 1;
-          StandardHideWidgets = 0;
+          StandardHideWidgets = 1;
         };
       };
 
@@ -38,7 +38,6 @@
 
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
-        NSAutomaticWindowAnimationsEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         AppleTemperatureUnit = "Celsius";
 
@@ -76,18 +75,14 @@
         minimize-to-application = true;
         show-recents = false;
         tilesize = 64;
-        # mission control on top right corner
         wvous-tl-corner = 2;
         wvous-br-corner = 1;
-
-        # I wish I knew what these mean,
-        # the documentation doesn't really explain
         enable-spring-load-actions-on-all-items = false;
         dashboard-in-overlay = false;
       };
 
       finder = {
-        CreateDesktop = true;
+        CreateDesktop = false;
         FXPreferredViewStyle = "clmv";
         FXEnableExtensionChangeWarning = false;
       };

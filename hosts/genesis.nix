@@ -1,9 +1,9 @@
-{ inputs, withSystem, config, ... }: {
+{ inputs, withSystem, config, lib, ... }: {
   _module.args = {
     darwinGenesis = architecture: hostName: extraModules:
       let
         specialArgs = withSystem architecture
-          ({ inputs', self', ... }: { inherit self' inputs' inputs; });
+          ({ pkgs, inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nix-darwin.lib.darwinSystem {
         inherit specialArgs;
         modules = [
@@ -17,7 +17,7 @@
           }
 
           inputs.home-manager.darwinModules.home-manager
-          inputs.self.nixosModules.global
+          inputs.self.nixosModules.genesis
           inputs.self.nixosModules.darwin
         ] ++ extraModules;
       };
@@ -29,27 +29,34 @@
       in inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
-          inputs.home-manager.nixosModules.home-manager
           {
             nixpkgs.hostPlatform = architecture;
-            home-manager.extraSpecialArgs = architecture;
+            home-manager.extraSpecialArgs = specialArgs;
             genesis = {
               architecture = "${architecture}";
               hostName = "${hostName}";
             };
           }
 
-          inputs.self.nixosModules.global
+          inputs.home-manager.nixosModules.home-manager
+          inputs.self.nixosModules.nixos
+          inputs.self.nixosModules.genesis
+          inputs.disko.nixosModules.disko
         ] ++ extraModules;
       };
 
-    homeGenesis = userName: homeRoot: homeConfiguration:
-      let homePath = "/${homeRoot}/${userName}";
+    homeDarwin = architecture: userName: homeConfiguration:
+      let homePath = "/Users/${userName}";
       in {
         home-manager.users.${userName} = {
           imports = with inputs.self.homeModules;
             [
-              { h.homePath = "${homePath}"; }
+              {
+                h = {
+                  homePath = "${homePath}";
+                  userName = "${userName}";
+                };
+              }
               paths
               kitty
               dev
@@ -62,13 +69,50 @@
               scripts
             ] ++ homeConfiguration;
 
-          home = { stateVersion = "24.11"; };
+          home.stateVersion = lib.mkForce "24.11";
         };
 
         users.users.${userName} = {
           name = "${userName}";
           home = "${homePath}";
-          inherit (config.h) shell;
+        };
+      };
+
+    homeLinux = userName: homeConfiguration:
+      let homePath = "/home/${userName}";
+      in {
+        imports = [ ./linux-home.nix ];
+        home-manager = {
+          users.${userName} = {
+            imports = with inputs.self.homeModules;
+              [
+                {
+                  h = {
+                    homePath = "${homePath}";
+                    userName = "${userName}";
+                    shell.package = lib.mkForce shell;
+                  };
+                }
+                paths
+                kitty
+                dev
+                git
+                tmux
+                fzf
+                fd
+                fish
+                lsd
+                scripts
+              ] ++ homeConfiguration;
+          };
+        };
+
+        users.users.${userName} = {
+          name = "${userName}";
+          home = "${homePath}";
+          isNormalUser = true;
+          password = "boobs";
+          extraGroups = [ "wheel" ];
         };
       };
   };

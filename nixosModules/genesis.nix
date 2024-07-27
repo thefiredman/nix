@@ -14,7 +14,7 @@
   };
 
   config = {
-    # NOTE: wrong place
+    # NOTE: wrong place, HM related
     programs = {
       fish.enable = true;
       direnv = {
@@ -25,12 +25,11 @@
     };
 
     networking = { inherit (config.genesis) hostName; };
-
     environment.shellAliases = { update = "nix flake update ~/nix"; };
 
     nix = {
       registry.nixpkgs.flake = inputs.nixpkgs;
-      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      nixPath = lib.singleton config.nix.settings.nix-path;
 
       settings = {
         experimental-features = [ "nix-command" "flakes" ];

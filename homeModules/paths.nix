@@ -5,6 +5,11 @@
       description = "Your systems home path. Must be defined explicitly.";
     };
 
+    userName = lib.mkOption {
+      type = with lib.types; str;
+      description = "Your username.";
+    };
+
     dataHome = lib.mkOption {
       type = with lib.types; str;
       description = "XDG_DATA_HOME";
@@ -85,6 +90,7 @@
 
       shellAliases = {
         vim = "nvim";
+        v = "nvim";
         vi = "nvim";
         tree = "tree -C";
         cleanup = "sudo nix-collect-garbage -d && nix-collect-garbage -d";

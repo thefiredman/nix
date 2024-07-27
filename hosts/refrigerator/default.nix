@@ -1,10 +1,10 @@
-{ darwinGenesis, homeGenesis, ... }: {
+{ darwinGenesis, homeDarwin, ... }: {
   flake.darwinConfigurations.refrigerator =
     darwinGenesis "aarch64-darwin" "refrigerator" [
       ./configuration.nix
       ./scripts.nix
       ./homebrew.nix
       ./skhd.nix
-      (homeGenesis "shalev" "Users" [ ./home ])
+      (homeDarwin "aarch64-darwin" "shalev" [ ./Users/shalev.nix ])
     ];
 }
