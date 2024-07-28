@@ -39,10 +39,6 @@
       enable = true;
       lfs.enable = true;
     };
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
   };
 
   time.timeZone = "Canada/Eastern";

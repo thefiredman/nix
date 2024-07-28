@@ -35,7 +35,7 @@
         spawn = [
           "'${pkgs.foot}/bin/foot --server --log-no-syslog'"
           "'${pkgs.river}/bin/rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 -main-location left'"
-          "'${pkgs.wlr-randr}/bin/wlr-randr --output Virtual-1 --mode 3840x2160'"
+          # "'${pkgs.wlr-randr}/bin/wlr-randr --output Virtual-1 --mode 4096x2160'"
           "'${pkgs.sandbar}/bin/sandbar \\
              -font \"monospace:size=32\" \\
              -active-fg-color \"#000000\" \\

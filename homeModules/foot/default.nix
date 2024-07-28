@@ -11,10 +11,10 @@
       server.enable = true;
       settings = {
         main = {
-          font = "monospace:size=42";
+        font = "monospace:size=42";
           term = "xterm-256color";
           dpi-aware = "no";
-          pad = "25x25";
+          pad = "18x18";
         };
 
         mouse = { hide-when-typing = "yes"; };

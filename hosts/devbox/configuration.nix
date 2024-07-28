@@ -1,17 +1,11 @@
 { pkgs, ... }: {
   environment.shellAliases = {
-    upgrade = "sudo nixos-rebuild switch --flake /mnt/hgfs/nix/";
-    bootgrade = "sudo nixos-rebuild build --flake /mnt/hgfs/nix/";
+    upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
+    bootgrade = "sudo nixos-rebuild build --flake ~/nix";
     update = "nix flake update";
   };
 
-  hardware = { graphics.enable = true; };
-  security.sudo.wheelNeedsPassword = false;
-
-  users.users.dashalev = { shell = pkgs.fish; };
-
   services = {
-    ofono.enable = true;
     openssh.enable = true;
 
     greetd = {
@@ -26,6 +20,16 @@
       };
     };
   };
+
+  hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [ mesa libva libvdpau ];
+    };
+  };
+
+  security.sudo.wheelNeedsPassword = false;
+  users.users.dashalev = { shell = pkgs.fish; };
 
   fonts = {
     packages = with pkgs;

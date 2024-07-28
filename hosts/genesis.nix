@@ -117,7 +117,7 @@
           home = "${homePath}";
           isNormalUser = true;
           initialPassword = "boobs";
-          extraGroups = [ "wheel" ];
+          extraGroups = [ "wheel" "video" ];
         };
       };
   };

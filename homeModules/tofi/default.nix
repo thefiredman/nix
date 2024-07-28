@@ -17,7 +17,6 @@
         padding-right = "40";
         background-color = "#111";
         text-color = "#f9fbff";
-        selection-color = "blue";
         width = "20%";
         height = "20%";
         prompt-text = "\"\"";
