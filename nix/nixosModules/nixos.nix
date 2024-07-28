@@ -1,11 +1,4 @@
 { pkgs, inputs, lib, config, ... }: {
-  environment.shellAliases = {
-    upgrade =
-      "sudo nixos-rebuild switch --flake ~/nix#${config.genesis.hostName}";
-    bootgrade =
-      "sudo nixos-rebuild build --flake ~/nix#${config.genesis.hostName}";
-  };
-
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

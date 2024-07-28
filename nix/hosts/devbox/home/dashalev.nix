@@ -3,7 +3,7 @@
     shell = {
       package = pkgs.fish;
       colour = "blue";
-      icon = "🍅";
+      icon = "😈";
     };
 
     kitty.enable = true;

@@ -3,6 +3,7 @@
     darwinGenesis "aarch64-darwin" "refrigerator" [
       ./configuration.nix
       ./scripts.nix
+      ./yabai.nix
       ./homebrew.nix
       ./skhd.nix
       (homeDarwin "aarch64-darwin" "shalev" [ ./Users/shalev.nix ])

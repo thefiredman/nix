@@ -25,8 +25,8 @@
     };
 
     networking = { inherit (config.genesis) hostName; };
-    environment.shellAliases = { update = "nix flake update ~/nix"; };
 
+    nixpkgs.config.allowUnfree = true;
     nix = {
       registry.nixpkgs.flake = inputs.nixpkgs;
       nixPath = lib.singleton config.nix.settings.nix-path;
@@ -48,7 +48,5 @@
         options = "--delete-older-than 4d";
       };
     };
-
-    nixpkgs.config.allowUnfree = true;
   };
 }

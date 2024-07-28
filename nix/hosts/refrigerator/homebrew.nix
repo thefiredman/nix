@@ -8,7 +8,6 @@
     brews = [ "choose-gui" ];
     enable = true;
     casks = [
-      "utm"
       "mullvadvpn"
       "prismlauncher"
       "krita"
@@ -25,8 +24,6 @@
       "blender"
       "qbittorrent"
       "wacom-tablet"
-      # for now
-      "rectangle"
     ];
   };
 }

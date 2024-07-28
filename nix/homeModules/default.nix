@@ -1,6 +1,5 @@
 {
   flake.homeModules = {
-    genesis = import ./genesis.nix;
     paths = import ./paths.nix;
     kitty = import ./kitty;
     foot = import ./foot;

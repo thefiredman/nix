@@ -12,6 +12,10 @@
         [[search_dirs]]
         path = "${config.h.configHome}/"
         depth = 5
+
+        [[search_dirs]]
+        path = "/mnt/"
+        depth = 20
       '';
     };
 
