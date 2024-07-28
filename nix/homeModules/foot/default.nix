@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options.h.foot = {
     enable = lib.mkEnableOption "Enables Foot terminal." // {
       default = false;
@@ -14,7 +14,7 @@
           font = "monospace:size=42";
           term = "xterm-256color";
           dpi-aware = "no";
-          pad = "6x6";
+          pad = "25x25";
         };
 
         mouse = { hide-when-typing = "yes"; };

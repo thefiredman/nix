@@ -9,6 +9,7 @@
       alt + shift - s       : mk-bookmark
       alt + shift - b       : open -a Safari
       ctrl + shift - q      : yabai -m window --close
+      ctrl + shift - s      : yabai -m window --toggle float
 
       ctrl + shift - h      : yabai -m window --focus west
       ctrl + shift - j      : yabai -m window --focus south

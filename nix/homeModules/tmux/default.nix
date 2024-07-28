@@ -10,12 +10,12 @@
         excluded_dirs = [".direnv"]
 
         [[search_dirs]]
-        path = "${config.h.configHome}/"
-        depth = 5
+        path = "/mnt/hgfs/dev"
+        depth = 20
 
         [[search_dirs]]
-        path = "/mnt/"
-        depth = 20
+        path = "${config.h.configHome}/"
+        depth = 5
       '';
     };
 

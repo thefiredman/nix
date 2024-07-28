@@ -12,4 +12,4 @@ if [[ ! "$response" =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-nix run github:nix-community/nixos-anywhere -- --build-on-remote --flake ~/nix#devbox nixos@$1
+nix run github:nix-community/nixos-anywhere -- --build-on-remote --flake .#devbox nixos@$1

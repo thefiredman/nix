@@ -12,6 +12,7 @@
       right_padding = 16;
       window_gap = 8;
     };
+
     extraConfig = ''
       yabai -m rule --add app=".*" manage=off
 

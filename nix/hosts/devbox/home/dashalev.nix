@@ -1,4 +1,4 @@
-{pkgs, ...}:{
+{ pkgs, ... }: {
   config.h = {
     shell = {
       package = pkgs.fish;
@@ -6,8 +6,8 @@
       icon = "😈";
     };
 
-    kitty.enable = true;
     river.enable = true;
     foot.enable = true;
+    tofi.enable = true;
   };
 }

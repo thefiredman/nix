@@ -13,6 +13,7 @@
     bash = import ./bash;
     lsd = import ./lsd;
     river = import ./river;
+    tofi = import ./tofi;
     scripts = import ./scripts;
   };
 }

@@ -6,6 +6,7 @@
   };
 
   hardware = { graphics.enable = true; };
+  security.sudo.wheelNeedsPassword = false;
 
   users.users.dashalev = { shell = pkgs.fish; };
 
