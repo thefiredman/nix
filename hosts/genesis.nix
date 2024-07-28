@@ -59,6 +59,7 @@
               }
               paths
               kitty
+              foot
               dev
               git
               tmux
@@ -66,6 +67,7 @@
               fd
               fish
               lsd
+              river
               scripts
             ] ++ homeConfiguration;
 
@@ -90,17 +92,18 @@
                   h = {
                     homePath = "${homePath}";
                     userName = "${userName}";
-                    shell.package = lib.mkForce shell;
                   };
                 }
                 paths
                 kitty
+                foot
                 dev
                 git
                 tmux
                 fzf
                 fd
                 fish
+                river
                 lsd
                 scripts
               ] ++ homeConfiguration;
@@ -111,7 +114,7 @@
           name = "${userName}";
           home = "${homePath}";
           isNormalUser = true;
-          password = "boobs";
+          initialPassword = "boobs";
           extraGroups = [ "wheel" ];
         };
       };

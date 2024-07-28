@@ -3,6 +3,7 @@
     genesis = import ./genesis.nix;
     paths = import ./paths.nix;
     kitty = import ./kitty;
+    foot = import ./foot;
     alacritty = import ./alacritty;
     dev = import ./dev;
     git = import ./git;
@@ -12,6 +13,7 @@
     fish = import ./fish;
     bash = import ./bash;
     lsd = import ./lsd;
+    river = import ./river;
     scripts = import ./scripts;
   };
 }
