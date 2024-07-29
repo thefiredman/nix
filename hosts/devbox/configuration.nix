@@ -1,10 +1,4 @@
 { pkgs, ... }: {
-  environment.shellAliases = {
-    upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
-    bootgrade = "sudo nixos-rebuild build --flake ~/nix";
-    update = "nix flake update";
-  };
-
   services = {
     openssh.enable = true;
 
@@ -33,6 +27,6 @@
 
   fonts = {
     packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "CascadiaCode" "IosevkaTerm" ]; }) ];
+      [ (nerdfonts.override { fonts = [ "IosevkaTerm" ]; }) ];
   };
 }

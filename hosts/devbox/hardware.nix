@@ -1,8 +1,9 @@
-{ lib, pkgs, ... }: {
+{ pkgs, ... }: {
   boot = {
     initrd.availableKernelModules =
       [ "uhci_hcd" "ahci" "xhci_pci" "nvme" "usbhid" "sr_mod" ];
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  networking.useDHCP = lib.mkDefault true;
+  networking.interfaces.ens160.useDHCP = true;
 }

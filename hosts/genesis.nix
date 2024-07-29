@@ -67,7 +67,7 @@
               fd
               fish
               lsd
-              tofi
+              fuzzel
               river
               scripts
             ] ++ homeConfiguration;
@@ -105,7 +105,7 @@
                 fd
                 fish
                 river
-                tofi
+                fuzzel
                 lsd
                 scripts
               ] ++ homeConfiguration;

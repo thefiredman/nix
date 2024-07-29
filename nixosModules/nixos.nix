@@ -4,6 +4,12 @@
     efi.canTouchEfiVariables = true;
   };
 
+  environment.shellAliases = {
+    upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
+    bootgrade = "sudo nixos-rebuild build --flake ~/nix";
+    update = "nix flake update --flake ~/nix";
+  };
+
   nix = {
     package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
@@ -34,6 +40,7 @@
   };
 
   programs = {
+    command-not-found.enable = false;
     dconf = { inherit (config.hardware.graphics) enable; };
     git = {
       enable = true;

@@ -4,6 +4,8 @@
   };
 
   config = lib.mkIf config.h.river.enable {
+    home.packages = with pkgs; [ wl-clipboard ];
+
     wayland.windowManager.river = let mod = "Mod1";
     in {
       enable = true;
@@ -16,7 +18,7 @@
           "${mod} J" = "focus-view next";
           "${mod} K" = "focus-view previous";
           "${mod} Space" =
-            "spawn 'pkill tofi || riverctl spawn \"$(${pkgs.tofi}/bin/tofi-drun)\"'";
+            "spawn 'pkill fuzzel || riverctl spawn \"$(${pkgs.fuzzel}/bin/fuzzel)\"'";
           "${mod}+Shift H" = "swap next";
           "${mod}+Shift J" = "swap previous";
           "${mod}+Shift Q" = "exit";
@@ -35,19 +37,15 @@
         spawn = [
           "'${pkgs.foot}/bin/foot --server --log-no-syslog'"
           "'${pkgs.river}/bin/rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 -main-location left'"
-          # "'${pkgs.wlr-randr}/bin/wlr-randr --output Virtual-1 --mode 4096x2160'"
-          "'${pkgs.sandbar}/bin/sandbar \\
-             -font \"monospace:size=32\" \\
-             -active-fg-color \"#000000\" \\
-             -active-bg-color \"#98971a\" \\
-             -inactive-fg-color \"#ebdbb2\" \\
-             -inactive-bg-color \"#000000\" \\
-             -urgent-fg-color \"#000000\" \\
-             -urgent-bg-color \"#cc241d\" \\
-             -title-fg-color \"#000000\" \\
-             -title-bg-color \"#98971a\" \\
-             -bottom
-         '"
+          "'${pkgs.wbg}/bin/wbg ${../wallpapers/donald_duck.jpg}'"
+          ''
+            "${pkgs.sandbar}/bin/sandbar \\
+               -font \"monospace:size=32\" \\
+               -active-fg-color \"#ffffff\" \\
+               -active-bg-color \"#b16286\" \\
+               -title-bg-color \"#000000\" \\
+               -inactive-bg-color \"#000000\"
+             "''
         ];
       };
 
