@@ -14,6 +14,7 @@
     lsd = import ./lsd;
     river = import ./river;
     fuzzel = import ./fuzzel;
+    chromium = import ./chromium;
     scripts = import ./scripts;
   };
 }
