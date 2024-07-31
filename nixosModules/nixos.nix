@@ -28,7 +28,11 @@
   };
 
   systemd.services.nix-daemon.serviceConfig = { OOMScoreAdjust = 250; };
-  security.rtkit.enable = config.services.pipewire.enable;
+  security = {
+    rtkit.enable = config.services.pipewire.enable;
+    polkit.enable = true;
+  };
+
   services.pipewire = {
     inherit (config.hardware.graphics) enable;
     pulse.enable = true;

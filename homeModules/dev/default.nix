@@ -61,7 +61,6 @@
         nixd
         nixpkgs-fmt
         nixfmt-classic
-        rust-analyzer
         lua-language-server
         nodePackages_latest.typescript-language-server
         nodePackages_latest.live-server

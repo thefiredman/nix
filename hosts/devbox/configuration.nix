@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   services = {
     openssh.enable = true;
+    rsyncd.enable = true;
 
     greetd = {
       enable = true;

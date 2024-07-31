@@ -38,14 +38,7 @@
           "'${pkgs.foot}/bin/foot --server --log-no-syslog'"
           "'${pkgs.river}/bin/rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 -main-location left'"
           "'${pkgs.wbg}/bin/wbg ${../wallpapers/donald_duck.jpg}'"
-          ''
-            "${pkgs.sandbar}/bin/sandbar \\
-               -font \"monospace:size=32\" \\
-               -active-fg-color \"#ffffff\" \\
-               -active-bg-color \"#b16286\" \\
-               -title-bg-color \"#000000\" \\
-               -inactive-bg-color \"#000000\"
-             "''
+          ''"${pkgs.sandbar}/bin/sandbar -font \"monospace:size=32\" -active-fg-color \"#ffffff\" -active-bg-color \"#b16286\" -title-bg-color \"#000000\" -inactive-bg-color \"#000000\""''
         ];
       };
 

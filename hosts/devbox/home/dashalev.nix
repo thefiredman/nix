@@ -10,15 +10,15 @@
       river.enable = true;
       foot.enable = true;
       fuzzel.enable = true;
+      kitty.enable = true;
     };
 
     home = {
       pointerCursor = {
-        gtk.enable = true;
+        gtk.enable = false;
         package = pkgs.whitesur-cursors;
         name = "WhiteSur-cursors";
         size = 32;
-        x11.enable = true;
       };
 
       packages = with pkgs; [ ];
