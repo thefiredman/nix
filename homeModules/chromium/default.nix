@@ -11,7 +11,7 @@
       commandLineArgs = [
         "--enable-features=UseOzonePlatform,Vulkan,VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL,CanvasOopRasterization,ParallelDownloading"
         "--ozone-platform-hint=auto"
-        "--enable-unsafe-webgpu"
+        # "--enable-unsafe-webgpu"
       ];
       extensions = [
         "cjpalhdlnbpafiamejdnhcphjbkeiagm"

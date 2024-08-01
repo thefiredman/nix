@@ -41,6 +41,9 @@
       };
 
       packages = with pkgs; [
+        # must have
+        mpv
+
         # editor
         tree-sitter
         zola

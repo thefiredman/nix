@@ -15,6 +15,7 @@
     river = import ./river;
     fuzzel = import ./fuzzel;
     chromium = import ./chromium;
+    xdg = import ./xdg;
     scripts = import ./scripts;
   };
 }
