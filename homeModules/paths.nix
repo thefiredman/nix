@@ -1,44 +1,37 @@
 { lib, pkgs, config, ... }: {
   options.h = {
     homePath = lib.mkOption {
-      type = with lib.types; str;
+      type = with lib.types; nonEmptyStr;
       description = "Your systems home path. Must be defined explicitly.";
     };
 
     userName = lib.mkOption {
-      type = with lib.types; str;
-      description = "Your username.";
+      type = with lib.types; nonEmptyStr;
     };
 
     dataHome = lib.mkOption {
-      type = with lib.types; str;
-      description = "XDG_DATA_HOME";
+      type = with lib.types; nonEmptyStr;
     };
 
     configHome = lib.mkOption {
-      type = with lib.types; str;
-      description = "XDG_CONFIG_HOME";
+      type = with lib.types; nonEmptyStr;
     };
 
     cacheHome = lib.mkOption {
-      type = with lib.types; str;
-      description = "XDG_CACHE_HOME";
+      type = with lib.types; nonEmptyStr;
     };
 
     shell = {
       package = lib.mkOption {
         type = lib.types.package;
-        description = "The users shell.";
       };
 
       colour = lib.mkOption {
-        type = with lib.types; str;
-        description = "The shells color.";
+        type = with lib.types; nonEmptyStr;
       };
 
       icon = lib.mkOption {
-        type = with lib.types; str;
-        description = "The shells icon.";
+        type = with lib.types; nonEmptyStr;
       };
     };
   };
