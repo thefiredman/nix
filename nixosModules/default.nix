@@ -1,5 +1,6 @@
 {
   flake.nixosModules = {
+    systemGenesis = import ./systemGenesis.nix;
     genesis = import ./genesis.nix;
     nixos = import ./nixos.nix;
     darwin = import ./darwin.nix;

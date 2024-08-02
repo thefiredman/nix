@@ -1,4 +1,4 @@
-{ inputs, withSystem, lib, ... }: {
+{ lib, inputs, withSystem, ... }: {
   _module.args = {
     darwinGenesis = architecture: hostName: extraModules:
       let

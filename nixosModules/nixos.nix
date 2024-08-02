@@ -4,10 +4,13 @@
     efi.canTouchEfiVariables = true;
   };
 
-  environment.shellAliases = {
-    upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
-    bootgrade = "sudo nixos-rebuild build --flake ~/nix";
-    update = "nix flake update --flake ~/nix";
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    shellAliases = {
+      upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
+      bootgrade = "sudo nixos-rebuild build --flake ~/nix";
+      update = "nix flake update --flake ~/nix";
+    };
   };
 
   nix = {

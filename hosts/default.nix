@@ -1,1 +1,3 @@
-{ imports = [ ./genesis.nix ./devbox ./refrigerator ]; }
+{ inputs, ... }: {
+  imports = [ ../nixosModules/systemGenesis.nix ./devbox ./refrigerator ];
+}
