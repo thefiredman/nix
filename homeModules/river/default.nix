@@ -71,6 +71,7 @@
 
     qt = {
       enable = true;
+      platformTheme = "gtk3";
       style.name = config.h.river.theme.name;
     };
 
