@@ -107,6 +107,8 @@
                 river
                 fuzzel
                 lsd
+                xdg
+                chromium
                 scripts
               ] ++ homeConfiguration;
           };

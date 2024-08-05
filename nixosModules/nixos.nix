@@ -18,8 +18,13 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
     settings = {
-      experimental-features =
-        [ "cgroups" "auto-allocate-uids" "fetch-closure" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "cgroups"
+        "auto-allocate-uids"
+        "fetch-closure"
+      ];
       nix-path = "nixpkgs=flake:nixpkgs";
       use-cgroups = true;
       auto-allocate-uids = true;
@@ -55,9 +60,28 @@
     };
   };
 
+  networking = {
+    useNetworkd = true;
+    firewall.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    usbutils
+    pciutils
+    file
+    wget
+    rsync
+    unzip
+    p7zip
+  ];
+
   time.timeZone = "Canada/Eastern";
   hardware.pulseaudio.enable = lib.mkForce false;
-  services.dbus.implementation = "broker";
+  services = {
+    dbus.implementation = "broker";
+    openssh.enable = true;
+    rsyncd.enable = true;
+  };
 
   system = { stateVersion = lib.mkForce "24.11"; };
 }

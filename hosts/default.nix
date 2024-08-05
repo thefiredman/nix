@@ -1,3 +1,1 @@
-{ inputs, ... }: {
-  imports = [ ../nixosModules/systemGenesis.nix ./devbox ./refrigerator ];
-}
+{ imports = [ ../nixosModules/systemGenesis.nix ./devbox ./refrigerator ./notflix ]; }
