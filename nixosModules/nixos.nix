@@ -73,6 +73,7 @@
     rsync
     unzip
     p7zip
+    neovim
   ];
 
   time.timeZone = "Canada/Eastern";

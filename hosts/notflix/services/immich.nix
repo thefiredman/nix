@@ -1,6 +1,4 @@
-{ config, inputs, domain, ... }:
-
-{
+{ config, inputs, domain, ... }: {
   imports = [ "${inputs.immich}/nixos/modules/services/web-apps/immich.nix" ];
 
   services = {
@@ -22,9 +20,21 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ config.services.immich.port ];
+  networking.firewall.allowedTCPPorts =
+    [ config.services.immich.port config.services.immich.redis.port ];
 
-  environment.persistence."/persist" = {
-    directories = [ config.services.immich.mediaLocation ];
+  environment = {
+    persistence."/persist" = {
+      directories = [
+        config.services.immich.mediaLocation
+        "/var/lib/redis-immich/"
+        "/run/postgresql/"
+        "/var/lib/postgresql/"
+      ];
+    };
+    
+    systemPackages = with inputs.immich.legacyPackages.x86_64-linux; [
+      immich.cli
+    ];
   };
 }

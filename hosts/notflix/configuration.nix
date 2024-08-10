@@ -13,6 +13,11 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    vesktop
+    qbittorrent
+  ];
+
   security.sudo.wheelNeedsPassword = false;
   users.users.dashalev = { shell = pkgs.fish; };
 

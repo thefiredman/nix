@@ -9,7 +9,6 @@
     enable = true;
     casks = [
       "mullvadvpn"
-      "prismlauncher"
       "krita"
       "tiled"
       "tg-pro"
@@ -17,7 +16,6 @@
       "firefox"
       "figma"
       "obs"
-      "zed"
       "affinity-designer"
       "affinity-photo"
       "affinity-publisher"
