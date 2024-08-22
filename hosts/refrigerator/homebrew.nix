@@ -5,23 +5,19 @@
       upgrade = true;
       autoUpdate = true;
     };
-    brews = [ "choose-gui" ];
+    # brews = [ "choose-gui" ];
     enable = true;
     casks = [
+      "zed"
+      "mac-mouse-fix"
+      "wacom-tablet"
       "mullvadvpn"
-      "krita"
-      "tiled"
-      "tg-pro"
-      "parsec"
-      "firefox"
-      "figma"
       "obs"
+      "krita"
       "affinity-designer"
       "affinity-photo"
       "affinity-publisher"
-      "blender"
-      "qbittorrent"
-      "wacom-tablet"
+      "figma"
     ];
   };
 }

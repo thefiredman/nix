@@ -18,6 +18,13 @@
     };
   };
 
+  services = {
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;
+    spice-autorandr.enable = true;
+    spice-webdavd.enable = true;
+  };
+
   security.sudo.wheelNeedsPassword = false;
   users.users.dashalev = { shell = pkgs.fish; };
 

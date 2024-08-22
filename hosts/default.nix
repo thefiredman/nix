@@ -1,1 +1,8 @@
-{ imports = [ ../nixosModules/systemGenesis.nix ./devbox ./refrigerator ./notflix ]; }
+{
+  imports = [
+    ../nixosModules/genesis/system.nix
+    ./devbox
+    ./refrigerator
+    ./notflix
+  ];
+}

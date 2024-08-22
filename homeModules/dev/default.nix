@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   options.h.dev = {
-    enable = lib.mkEnableOption "Enable development tools." // {
+    enable = lib.mkEnableOption "Enable generic development tools." // {
       default = true;
     };
   };
@@ -36,14 +36,10 @@
         NPM_CONFIG_USERCONFIG = "${config.h.configHome}/npm/config";
         CARGO_HOME = "${config.h.dataHome}/cargo";
         LESSHISTFILE = "/dev/null";
-        JDK17 = jdk17;
         JDK21 = jdk21;
       };
 
       packages = with pkgs; [
-        # must have
-        mpv
-
         # editor
         tree-sitter
         zola
@@ -54,7 +50,7 @@
         nodejs
         go
 
-        # basic compilers for nvim
+        # basic compilers for nvim/generic
         gcc
         cmake
 
@@ -84,7 +80,7 @@
         stylua
 
         # apple
-        # lemon.xcodes
+        # stable.xcodes
 
         # util
         smartmontools

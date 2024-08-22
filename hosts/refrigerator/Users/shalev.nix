@@ -7,7 +7,7 @@
     };
 
     kitty.enable = true;
-    dev.enable = false;
-    tmux.enable = false;
+    dev.enable = true;
+    tmux.enable = true;
   };
 }

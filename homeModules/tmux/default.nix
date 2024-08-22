@@ -4,6 +4,25 @@
   };
 
   config = lib.mkIf config.h.tmux.enable {
+    home.packages = with pkgs; [ tmux-sessionizer ];
+    xdg.configFile = {
+      "tms/config.toml".text = ''
+        excluded_dirs = [".direnv"]
+
+        [[search_dirs]]
+        path = "${config.h.configHome}/"
+        depth = 5
+
+        [[search_dirs]]
+        path = "${config.h.homePath}/nix/"
+        depth = 2
+
+        [[search_dirs]]
+        path = "${config.h.homePath}/dev/"
+        depth = 20
+      '';
+    };
+
     programs.tmux = {
       enable = true;
       keyMode = "vi";

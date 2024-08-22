@@ -1,38 +1,14 @@
 { lib, pkgs, config, ... }: {
   options.h = {
-    homePath = lib.mkOption {
-      type = with lib.types; nonEmptyStr;
-      description = "Your systems home path. Must be defined explicitly.";
-    };
-
-    userName = lib.mkOption {
-      type = with lib.types; nonEmptyStr;
-    };
-
-    dataHome = lib.mkOption {
-      type = with lib.types; nonEmptyStr;
-    };
-
-    configHome = lib.mkOption {
-      type = with lib.types; nonEmptyStr;
-    };
-
-    cacheHome = lib.mkOption {
-      type = with lib.types; nonEmptyStr;
-    };
-
+    homePath = lib.mkOption { type = with lib.types; nonEmptyStr; };
+    userName = lib.mkOption { type = with lib.types; nonEmptyStr; };
+    dataHome = lib.mkOption { type = with lib.types; nonEmptyStr; };
+    configHome = lib.mkOption { type = with lib.types; nonEmptyStr; };
+    cacheHome = lib.mkOption { type = with lib.types; nonEmptyStr; };
     shell = {
-      package = lib.mkOption {
-        type = lib.types.package;
-      };
-
-      colour = lib.mkOption {
-        type = with lib.types; nonEmptyStr;
-      };
-
-      icon = lib.mkOption {
-        type = with lib.types; nonEmptyStr;
-      };
+      package = lib.mkOption { type = lib.types.package; };
+      colour = lib.mkOption { type = with lib.types; nonEmptyStr; };
+      icon = lib.mkOption { type = with lib.types; nonEmptyStr; };
     };
   };
 
@@ -63,19 +39,6 @@
         asciiquarium-transparent
         nyancat
         cmatrix
-
-        ## INFO
-        onefetch
-        fastfetch
-        btop
-        htop
-        dysk
-        bat
-        hyperfine
-
-        ## UTIL
-        tree
-        vimv
 
         ## SUPER IMPORTANT
         sl

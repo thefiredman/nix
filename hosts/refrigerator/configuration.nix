@@ -4,7 +4,7 @@
   environment = {
     shells = [ pkgs.fish ];
     loginShell = pkgs.fish;
-    systemPackages = [ pkgs.neovim ];
+    systemPackages = [ pkgs.neovim pkgs.xcodes ];
   };
 
   fonts = {
@@ -12,11 +12,11 @@
       # NOTE: IosevkaTerm
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       lato
-      ibm-plex
+      # ibm-plex
+      # spleen
     ];
   };
 
-  # why does it does this every switch even when no settings change...
   # system = {
   #   defaults = {
   #     CustomSystemPreferences = { };
@@ -27,44 +27,75 @@
   #       };
   #     };
   #
+  #     # disable "Application Downloaded from Internet" popup
   #     LaunchServices.LSQuarantine = false;
+  #
   #     NSGlobalDomain = {
-  #       # you can move windows by holding ctrl+cmd
+  #       # drag windows by holding CTRL + CMD
   #       NSWindowShouldDragOnGesture = true;
-  #       # https://github.com/LnL7/nix-darwin/blob/230a197063de9287128e2c68a7a4b0cd7d0b50a7/modules/system/defaults/NSGlobalDomain.nix
-  #       AppleShowScrollBars = "Automatic";
-  #       AppleInterfaceStyle = "Dark";
+  #
+  #       # prevent holding a key to get diffrent accents for said key
+  #       # very annoying if you like holding down keys
   #       ApplePressAndHoldEnabled = false;
+  #
+  #       # scroll bar actually works like one, i.e. you click where you want to be
+  #       AppleScrollerPagingBehavior = true;
+  #       # show all file extensions
   #       AppleShowAllExtensions = false;
+  #       # show hidden files and dirs
   #       AppleShowAllFiles = true;
   #
+  #       # prevent auto correction
   #       NSAutomaticCapitalizationEnabled = false;
   #       NSAutomaticSpellingCorrectionEnabled = false;
+  #       NSAutomaticPeriodSubstitutionEnabled = false;
+  #       # disable smart dashes
+  #       NSAutomaticDashSubstitutionEnabled = false;
+  #
+  #       # disable iCloud as a default storage destination
   #       NSDocumentSaveNewDocumentsToCloud = false;
-  #       AppleTemperatureUnit = "Celsius";
+  #
+  #       # expand save panel by default
+  #       NSNavPanelExpandedStateForSaveMode = true;
+  #       NSNavPanelExpandedStateForSaveMode2 = true;
+  #
+  #       # expand print panel by default
+  #       PMPrintingExpandedStateForPrint = true;
+  #       PMPrintingExpandedStateForPrint2 = true;
   #
   #       # 120, 90, 60, 30, 12, 6, 2
   #       KeyRepeat = 2;
   #
   #       # 120, 94, 68, 35, 25, 15
   #       InitialKeyRepeat = 15;
+  #
+  #       # disables natural scrolling, I like natural scrolling on the trackpad
+  #       # however because I need to install an app, to make it behave normal fuck that and fuck apple for that
   #       "com.apple.swipescrolldirection" = false;
+  #
+  #       # increase window resize speed for Cocoa applications
+  #       # NSWindowResizeTime = 1.0e-3;
   #     };
   #
-  #     spaces = { spans-displays = false; };
-  #
   #     trackpad = {
+  #       # tapping works yaya
   #       Clicking = true;
+  #       # make trackpad haptic feedback be soft
   #       ActuationStrength = 0;
   #       FirstClickThreshold = 0;
   #       SecondClickThreshold = 0;
   #     };
   #
   #     dock = {
+  #       # hide the dock so you can actually use the monitor you paid for
   #       autohide = true;
-  #       mru-spaces = false;
   #       autohide-time-modifier = 0.1;
   #       autohide-delay = 0.0;
+  #
+  #       # prevent automatic arrangement of spaces
+  #       mru-spaces = false;
+  #
+  #       # dock impermenance why not
   #       persistent-apps = [
   #         "/Applications/Safari.app"
   #         "/System/Applications/Mail.app"
@@ -72,6 +103,7 @@
   #         "/System/Applications/Music.app"
   #         "/Applications/Infuse.app"
   #       ];
+  #
   #       show-process-indicators = false;
   #       showhidden = true;
   #       minimize-to-application = true;
@@ -79,8 +111,11 @@
   #       tilesize = 64;
   #       wvous-tl-corner = 2;
   #       wvous-br-corner = 1;
-  #       enable-spring-load-actions-on-all-items = false;
-  #       dashboard-in-overlay = false;
+  #
+  #       # Spring-loaded Dock items are supposed to save you 
+  #       # time by allowing you to drag a file over the folder/icon. 
+  #       # Hover it for a few seconds and the application/folder will open.
+  #       enable-spring-load-actions-on-all-items = true;
   #     };
   #
   #     finder = {
@@ -89,16 +124,14 @@
   #       FXEnableExtensionChangeWarning = false;
   #     };
   #
-  #     loginwindow = {
-  #       LoginwindowText = "yo momma gay";
-  #       GuestEnabled = false;
-  #     };
+  #     loginwindow = { GuestEnabled = false; };
   #   };
   #
   #   keyboard = {
   #     enableKeyMapping = true;
   #     swapLeftCommandAndLeftAlt = false;
-  #     remapCapsLockToEscape = true;
+  ##    currently remapped to globe for new WM stuff
+  ##    remapCapsLockToEscape = true;
   #   };
   # };
 }

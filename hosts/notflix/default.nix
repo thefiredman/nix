@@ -6,7 +6,6 @@
     ./services
     ./tunnel.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.self.nixosModules.rollback
     inputs.impermanence.nixosModules.impermanence
     (homeLinux "dashalev" [ ./home/dashalev.nix ])
   ];

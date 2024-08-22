@@ -20,15 +20,15 @@
     cursorTheme = {
       name = lib.mkOption {
         type = with lib.types; nonEmptyStr;
-        default = "WhiteSur-cursors";
+        default = "Adwaita";
       };
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.whitesur-cursors;
+        default = pkgs.adwaita-icon-theme;
       };
       size = lib.mkOption {
         type = with lib.types; number;
-        default = 24;
+        default = 18;
       };
     };
 
@@ -43,11 +43,35 @@
         default = pkgs.adw-gtk3;
       };
     };
+
+    extraConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+    };
   };
 
   config = lib.mkIf config.h.river.enable {
     home = {
-      packages = with pkgs; [ wl-clipboard pavucontrol nautilus pulsemixer ];
+      packages = with pkgs; [
+        wl-clipboard
+        pavucontrol
+        nautilus
+        pulsemixer
+        dconf-editor
+        xorg.xeyes
+      ];
+
+      pointerCursor = {
+        gtk.enable = true;
+        inherit (config.h.river.cursorTheme) name;
+        inherit (config.h.river.cursorTheme) package;
+      };
+
+      sessionVariables = {
+        XCURSOR_THEME = config.h.river.cursorTheme.name;
+        XCURSOR_SIZE = "${toString config.h.river.cursorTheme.size}";
+        GTK_THEME = config.h.river.theme.name;
+      };
     };
 
     gtk = {
@@ -71,8 +95,7 @@
 
     qt = {
       enable = true;
-      platformTheme.name = "gtk3";
-      style.name = config.h.river.theme.name;
+      platformTheme.name = "gtk";
     };
 
     dconf.settings = {
@@ -116,7 +139,7 @@
           "'${pkgs.river}/bin/rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 -main-location left'"
           "'${pkgs.wbg}/bin/wbg ${config.h.river.wallpaper}'"
           ''
-            "${pkgs.sandbar}/bin/sandbar -font \"monospace:size=32\" -active-fg-color \"#ffffff\" -active-bg-color \"#b16286\" -title-bg-color \"#000000\" -inactive-bg-color \"#000000\""''
+            "${pkgs.sandbar}/bin/sandbar -font \"monospace:size=24\" -active-fg-color \"#ffffff\" -active-bg-color \"#b16286\" -title-bg-color \"#000000\" -inactive-bg-color \"#000000\""''
         ];
       };
 
@@ -133,6 +156,7 @@
         all_tags=$(((1 << 32) - 1))
         riverctl map normal ${mod} 0 set-focused-tags "$all_tags"
         riverctl map normal ${mod}+Shift 0 set-view-tags "$all_tags"
+        ${config.h.river.extraConfig}
       '';
     };
   };

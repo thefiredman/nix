@@ -13,16 +13,13 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    vesktop
-    qbittorrent
-  ];
+  environment.systemPackages = with pkgs; [ vesktop qbittorrent ];
 
   security.sudo.wheelNeedsPassword = false;
   users.users.dashalev = { shell = pkgs.fish; };
 
   fonts = {
     packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "IosevkaTerm" ]; }) ];
+      [ (nerdfonts.override { fonts = [ "CascadiaCode" ]; }) ];
   };
 }

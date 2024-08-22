@@ -10,7 +10,7 @@
         main = {
           terminal = "${pkgs.foot}/bin/footclient";
           layer = "overlay";
-          font = "monospace:size=28";
+          font = "monospace:size=24";
         };
 
         colors = {

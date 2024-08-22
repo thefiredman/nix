@@ -4,12 +4,14 @@
     efi.canTouchEfiVariables = true;
   };
 
+  time.timeZone = "Canada/Eastern";
+
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
     shellAliases = {
-      upgrade = "sudo nixos-rebuild switch --flake ~/nix/";
-      bootgrade = "sudo nixos-rebuild build --flake ~/nix";
-      update = "nix flake update --flake ~/nix";
+      upgrade = "sudo nixos-rebuild switch --flake ${config.genesis.nixConfig}";
+      bootgrade = "sudo nixos-rebuild build --flake ${config.genesis.nixConfig}";
+      update = "nix flake update --flake ${config.genesis.nixConfig}";
     };
   };
 
@@ -65,18 +67,8 @@
     firewall.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    usbutils
-    pciutils
-    file
-    wget
-    rsync
-    unzip
-    p7zip
-    neovim
-  ];
+  environment.systemPackages = with pkgs; [ usbutils pciutils file ];
 
-  time.timeZone = "Canada/Eastern";
   hardware.pulseaudio.enable = lib.mkForce false;
   services = {
     dbus.implementation = "broker";

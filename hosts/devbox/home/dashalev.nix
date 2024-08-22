@@ -7,10 +7,21 @@
         icon = "😈";
       };
 
-      river.enable = true;
+      river = {
+        enable = true;
+        cursorTheme = {
+          name = "WhiteSur-cursors";
+          package = pkgs.whitesur-cursors;
+        };
+        extraConfig = ''
+          riverctl spawn "${pkgs.wlr-randr}/bin/wlr-randr --output Virtual-1 --mode 3840x2160 --scale 2"
+        '';
+      };
+
       foot.enable = true;
       fuzzel.enable = true;
       kitty.enable = true;
+      chromium.enable = true;
     };
   };
 }

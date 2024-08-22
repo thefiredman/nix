@@ -9,7 +9,8 @@
     programs.chromium = {
       enable = true;
       commandLineArgs = [
-        "--enable-features=UseOzonePlatform,Vulkan,VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL,CanvasOopRasterization,ParallelDownloading"
+        # "--enable-features=UseOzonePlatform,Vulkan,VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL,CanvasOopRasterization,ParallelDownloading"
+        "--enable-features=UseOzonePlatform,VaapiVideoEncoder,VaapiVideoDecoder"
         "--ozone-platform-hint=auto"
         # "--enable-unsafe-webgpu"
       ];

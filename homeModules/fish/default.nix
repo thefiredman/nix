@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }: {
   options.h.fish = {
-    enable = lib.mkEnableOption "Enables the fish shell." // {
-      default = true;
-    };
+    enable = lib.mkEnableOption
+      "Enables the fish shell. Fish should be enabled globally for this to work correctly." // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.h.fish.enable {
