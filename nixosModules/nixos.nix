@@ -9,9 +9,9 @@
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
     shellAliases = {
-      upgrade = "sudo nixos-rebuild switch --flake ${config.genesis.nixConfig}";
-      bootgrade = "sudo nixos-rebuild build --flake ${config.genesis.nixConfig}";
-      update = "nix flake update --flake ${config.genesis.nixConfig}";
+      upgrade = "sudo nixos-rebuild switch --flake ${config.genesis.nixConfigDir}";
+      bootgrade = "sudo nixos-rebuild build --flake ${config.genesis.nixConfigDir}";
+      update = "nix flake update --flake ${config.genesis.nixConfigDir}";
     };
   };
 

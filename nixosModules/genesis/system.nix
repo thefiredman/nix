@@ -98,6 +98,7 @@
               fuzzel
               river
               scripts
+              nixCats
             ] ++ homeConfiguration;
 
           home.stateVersion = lib.mkForce "24.11";
@@ -138,6 +139,7 @@
                 xdg
                 chromium
                 scripts
+                nixCats
               ] ++ homeConfiguration;
           };
         };

@@ -9,6 +9,7 @@
     };
 
     foot.enable = true;
+
     river = {
       enable = true;
       cursorTheme = {
@@ -20,6 +21,7 @@
         riverctl spawn "${pkgs.wlr-randr}/bin/wlr-randr --output DP-3 --scale 2"
       '';
     };
+
     fuzzel.enable = true;
     xdg.enable = true;
     chromium.enable = true;

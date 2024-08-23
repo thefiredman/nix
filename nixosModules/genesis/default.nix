@@ -13,7 +13,7 @@
         description = "Your systems architecture. Must be defined explicitly.";
       };
 
-      nixConfig = lib.mkOption {
+      nixConfigDir = lib.mkOption {
         type = with lib.types; nonEmptyStr;
         default = "~/nix/";
         description = "Configuration location important for rebuilds.";

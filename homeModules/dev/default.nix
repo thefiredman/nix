@@ -15,16 +15,15 @@
       };
     };
 
-    programs.neovim = {
-      extraLuaPackages = ps: with ps; [ jsregexp ];
-      extraPackages = with pkgs; [ lua51Packages.lua luarocks ];
-
-      enable = true;
-      defaultEditor = true;
-      withNodeJs = true;
-      withPython3 = true;
-      withRuby = false;
-    };
+    #programs.neovim = {
+    #  extraLuaPackages = ps: with ps; [ jsregexp ];
+    #  extraPackages = with pkgs; [ lua51Packages.lua luarocks ];
+    #  enable = true;
+    #  defaultEditor = true;
+    #  withNodeJs = true;
+    #  withPython3 = true;
+    #  withRuby = false;
+    #};
 
     home = {
       sessionVariables = with pkgs; {
@@ -51,33 +50,33 @@
         go
 
         # basic compilers for nvim/generic
-        gcc
-        cmake
+        # gcc
+        # cmake
 
         # lsp's
-        vscode-langservers-extracted
-        nil
-        nixd
-        nixpkgs-fmt
-        nixfmt-classic
-        lua-language-server
-        nodePackages_latest.typescript-language-server
-        nodePackages_latest.live-server
-        emmet-ls
-        marksman
+        # vscode-langservers-extracted
+        # nil
+        # nixd
+        # nixpkgs-fmt
+        # nixfmt-classic
+        # lua-language-server
+        # nodePackages_latest.typescript-language-server
+        # nodePackages_latest.live-server
+        # emmet-ls
+        # marksman
 
         # fmt + linter
-        deadnix
-        statix
-        editorconfig-checker
-        ruff
-        mypy
-        shellcheck
-        jq
-        yq
-        typstfmt
-        shfmt
-        stylua
+        # deadnix
+        # statix
+        # editorconfig-checker
+        # ruff
+        # mypy
+        # shellcheck
+        # jq
+        # yq
+        # typstfmt
+        # shfmt
+        # stylua
 
         # apple
         # stable.xcodes

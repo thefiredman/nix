@@ -3,8 +3,8 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   environment.shellAliases = {
-    upgrade = "darwin-rebuild switch --flake ${config.genesis.nixConfig}#${config.genesis.hostName}";
-    bootgrade = "darwin-rebuild build --flake ${config.genesis.nixConfig}#${config.genesis.hostName}";
+    upgrade = "darwin-rebuild switch --flake ${config.genesis.nixConfigDir}#${config.genesis.hostName}";
+    bootgrade = "darwin-rebuild build --flake ${config.genesis.nixConfigDir}#${config.genesis.hostName}";
     update = "nix flake update ~/nix";
   };
 

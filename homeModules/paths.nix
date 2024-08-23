@@ -45,9 +45,6 @@
       ];
 
       shellAliases = {
-        vim = "nvim";
-        v = "nvim";
-        vi = "nvim";
         tree = "tree -C";
         cleanup = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
         asciiquarium = "asciiquarium -t";

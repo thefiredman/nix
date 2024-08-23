@@ -3,7 +3,6 @@
     paths = import ./paths.nix;
     kitty = import ./kitty;
     foot = import ./foot;
-    alacritty = import ./alacritty;
     dev = import ./dev;
     git = import ./git;
     tmux = import ./tmux;
@@ -17,5 +16,6 @@
     chromium = import ./chromium;
     xdg = import ./xdg;
     scripts = import ./scripts;
+    nixCats = import ./nixCats;
   };
 }

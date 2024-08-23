@@ -17,7 +17,7 @@
       neovim
     ];
 
-    variables.NIX_CONFIG = "${config.genesis.nixConfig}";
+    variables.NIX_CONFIG_DIR = "${config.genesis.nixConfigDir}";
   };
 
   programs = {

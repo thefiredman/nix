@@ -17,14 +17,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    immich = {
-      url =
-        "github:jvanbruegge/nixpkgs/c0ee4c1770aa1ef998c977c4cc653a07ec95d9bf";
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +30,19 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    nixCats = {
+      url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    immich = {
+      url =
+        "github:jvanbruegge/nixpkgs/c0ee4c1770aa1ef998c977c4cc653a07ec95d9bf";
     };
   };
 }
