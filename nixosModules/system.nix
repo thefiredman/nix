@@ -113,7 +113,7 @@
     homeLinux = userName: homeConfiguration:
       let homePath = "/home/${userName}";
       in {
-        imports = [ ./linux-home.nix ];
+        imports = [ ./genesis/linux-home.nix ];
         home-manager = {
           users.${userName} = {
             imports = with inputs.self.homeModules;

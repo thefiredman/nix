@@ -12,7 +12,7 @@
   };
 
   hardware = {
-    intelgpu.driver = "xe";
+    #intelgpu.driver = "xe";
     graphics = {
       enable = true;
       extraPackages = with pkgs; [

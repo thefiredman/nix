@@ -1,7 +1,7 @@
-{ inputs, }: {
+{
   imports = [
+    ./rollback.nix
     ./a.nix
     ./b.nix
-    inputs.self.nixosModules.zfs
   ];
 }

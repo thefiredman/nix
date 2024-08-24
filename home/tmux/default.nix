@@ -14,11 +14,7 @@
         depth = 5
 
         [[search_dirs]]
-        path = "${config.h.homePath}/nix/"
-        depth = 2
-
-        [[search_dirs]]
-        path = "${config.h.homePath}/dev/"
+        path = "${config.h.homePath}/projects/"
         depth = 20
       '';
     };

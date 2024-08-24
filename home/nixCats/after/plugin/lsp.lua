@@ -1,4 +1,4 @@
-if nixCats('lsps-enabled') then
+if require('usr.lsps').enabled then
   vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
       vim.api.nvim_command("packadd nvim-autopairs")

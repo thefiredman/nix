@@ -1,4 +1,4 @@
-if nixCats('lsps-enabled') then
+if require('usr.lsps').enabled then
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")

@@ -5,4 +5,7 @@ require 'nixCatsUtils'.setup {
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require 'usr'
+require 'usr.opt'
+require 'usr.remap'
+require 'usr.appearance'
+require 'usr.lsps'

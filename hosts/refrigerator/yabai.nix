@@ -5,6 +5,7 @@
     enableScriptingAddition = true;
     config = {
       layout = "float";
+      window_shadow = "off";
     };
   };
 }

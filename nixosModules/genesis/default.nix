@@ -15,7 +15,7 @@
 
       nixConfigDir = lib.mkOption {
         type = with lib.types; nonEmptyStr;
-        default = "~/nix/";
+        default = "~/.config/nix";
         description = "Configuration location important for rebuilds.";
       };
     };

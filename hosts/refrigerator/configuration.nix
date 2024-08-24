@@ -69,9 +69,8 @@
   #       # 120, 94, 68, 35, 25, 15
   #       InitialKeyRepeat = 15;
   #
-  #       # disables natural scrolling, I like natural scrolling on the trackpad
-  #       # however because I need to install an app, to make it behave normal fuck that and fuck apple for that
-  #       "com.apple.swipescrolldirection" = false;
+  #       # enable natural scrolling
+  #       "com.apple.swipescrolldirection" = true;
   #
   #       # increase window resize speed for Cocoa applications
   #       # NSWindowResizeTime = 1.0e-3;
@@ -130,8 +129,8 @@
   #   keyboard = {
   #     enableKeyMapping = true;
   #     swapLeftCommandAndLeftAlt = false;
-  ##    currently remapped to globe for new WM stuff
-  ##    remapCapsLockToEscape = true;
+  # #    currently remapped to globe for new WM stuff
+  # #    remapCapsLockToEscape = true;
   #   };
   # };
 }

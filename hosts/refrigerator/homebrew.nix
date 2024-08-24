@@ -12,6 +12,7 @@
       "mac-mouse-fix"
       "wacom-tablet"
       "mullvadvpn"
+      "firefox"
       "obs"
       "krita"
       "affinity-designer"

@@ -36,7 +36,7 @@ in {
   config = lib.mkIf cfg.enable {
     boot = {
       tmp.cleanOnBoot = true;
-      kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+      kernelPackages = lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages;
       kernelParams = [ "usbcore.autosuspend=-1" ];
     };
 

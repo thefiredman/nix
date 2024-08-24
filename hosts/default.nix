@@ -1,6 +1,6 @@
 {
   imports = [
-    ../nixosModules/genesis/system.nix
+    ../nixosModules/system.nix
     ./devbox
     ./refrigerator
     ./notflix

@@ -6,6 +6,6 @@
       ./homebrew.nix
       ./yabai.nix
       ./skhd.nix
-      (homeDarwin "aarch64-darwin" "shalev" [ ./Users/shalev.nix ])
+      (homeDarwin "aarch64-darwin" "shalev" [ ./Users/dashalev.nix ])
     ];
 }
