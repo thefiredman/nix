@@ -13,4 +13,6 @@ if require('usr.lsps').enabled then
       border = "none",
     },
   }
+
+  require('nvim-ts-autotag').setup({})
 end

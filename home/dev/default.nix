@@ -25,7 +25,9 @@
         NPM_CONFIG_USERCONFIG = "${config.h.configHome}/npm/config";
         CARGO_HOME = "${config.h.dataHome}/cargo";
         LESSHISTFILE = "/dev/null";
+        JAVA_HOME = "${jdk17}";
         JDK21 = jdk21;
+        JDK17 = jdk17;
       };
 
       packages = with pkgs; [
@@ -34,6 +36,13 @@
         ripgrep
         fd
         jq
+
+        nodePackages.npm
+        nodejs
+
+        # school (i.e. bs) languages
+        maven
+        dotnet-sdk_8
 
         # util
         smartmontools

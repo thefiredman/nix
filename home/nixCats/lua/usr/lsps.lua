@@ -5,6 +5,10 @@ M.enabled = nixCats('lsps-enabled')
 if M.enabled then
   require("neodev").setup()
 
+  vim.api.nvim_command("packadd crates.nvim")
+  require("crates").setup({})
+  require('Comment').setup()
+
   M.conform = require("conform")
   M.capabilities = require("cmp_nvim_lsp").default_capabilities()
   M.format = function(bufnr)
@@ -114,12 +118,6 @@ if M.enabled then
 
   local lspconfig = require("lspconfig")
 
-  lspconfig.gdscript.setup({
-    capabilities = M.capabilities,
-    on_attach = M.on_attach,
-    settings = {},
-  })
-
   lspconfig.nil_ls.setup({
     capabilities = M.capabilities,
     on_attach = M.on_attach,
@@ -168,19 +166,22 @@ if M.enabled then
     settings = {},
   })
 
-  lspconfig.zls.setup({
+  lspconfig.marksman.setup {
     capabilities = M.capabilities,
     on_attach = M.on_attach,
     settings = {},
-  })
+  }
 
-  lspconfig.marksman.setup {}
+  lspconfig.csharp_ls.setup {
+    capabilities = M.capabilities,
+    on_attach = M.on_attach,
+    settings = {},
+  }
+
   lspconfig.rust_analyzer.setup({
     capabilities = M.capabilities,
     on_attach = function(client, bufnr)
       M.on_attach(client, bufnr)
-      vim.api.nvim_command("packadd crates.nvim")
-      require("crates").setup({})
     end,
     settings = {
       ["rust_analyzer"] = {
@@ -192,17 +193,12 @@ if M.enabled then
       },
     },
   })
+
+  lspconfig.zls.setup({
+    capabilities = M.capabilities,
+    on_attach = M.on_attach,
+    settings = {},
+  })
 end
-
-
-require("nvim-treesitter.configs").setup({
-  ignore_install = {},
-  sync_install = false,
-  auto_install = false,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-})
 
 return M

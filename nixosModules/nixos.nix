@@ -76,5 +76,5 @@
     rsyncd.enable = true;
   };
 
-  system = { stateVersion = lib.mkForce "24.11"; };
+  system = { stateVersion = lib.mkForce "24.05"; };
 }

@@ -43,6 +43,12 @@ in {
             nodePackages_latest.live-server
             emmet-ls
             marksman
+            jdt-language-server
+            csharp-ls
+
+            # utils
+            maven
+            dotnet-sdk_8
 
             # fmt + linter
             deadnix
@@ -77,7 +83,9 @@ in {
             nvim-lspconfig
             neodev-nvim
             nvim-lint
+            nvim-ts-autotag
             conform-nvim
+            comment-nvim
 
             cmp-nvim-lsp
             cmp-path
@@ -99,11 +107,8 @@ in {
             trouble-nvim
           ];
 
-          lsps-enabled = with pkgs.vimPlugins; [ crates-nvim ];
+          lsps-enabled = with pkgs.vimPlugins; [ crates-nvim nvim-jdtls ];
         };
-
-        extraPython3Packages = { test = (_: [ ]); };
-        extraLuaPackages = { test = [ (_: [ ]) ]; };
       };
 
       packages = {

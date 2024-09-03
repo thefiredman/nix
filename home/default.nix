@@ -2,6 +2,8 @@
   flake.homeModules = {
     paths = import ./paths.nix;
     kitty = import ./kitty;
+    alacritty = import ./alacritty;
+    wezterm = import ./wezterm;
     foot = import ./foot;
     dev = import ./dev;
     git = import ./git;

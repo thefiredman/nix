@@ -1,7 +1,7 @@
 {
   # yabai only for instant window snapping
   services.yabai = {
-    enable = true;
+    enable = false;
     enableScriptingAddition = true;
     config = {
       layout = "float";

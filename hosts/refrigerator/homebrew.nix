@@ -9,9 +9,9 @@
     enable = true;
     casks = [
       "zed"
+      "prismlauncher"
       "mac-mouse-fix"
       "wacom-tablet"
-      "mullvadvpn"
       "firefox"
       "obs"
       "krita"

@@ -3,10 +3,10 @@
     darwinGenesis = architecture: hostName: extraModules:
       let
         overlay-stable = final: prev: {
-          stable = import inputs.nixpkgs-stable {
-            inherit architecture;
-            config.allowUnfree = true;
-          };
+          # stable = import inputs.nixpkgs-stable {
+          #   inherit architecture;
+          #   config.allowUnfree = true;
+          # };
         };
 
         specialArgs = withSystem architecture
@@ -40,10 +40,10 @@
     linuxGenesis = architecture: hostName: extraModules:
       let
         overlay-stable = final: prev: {
-          stable = import inputs.nixpkgs-stable {
-            inherit architecture;
-            config.allowUnfree = true;
-          };
+          # stable = import inputs.nixpkgs-stable {
+          #   inherit architecture;
+          #   config.allowUnfree = true;
+          # };
         };
 
         specialArgs = withSystem architecture
@@ -86,6 +86,8 @@
                 };
               }
               paths
+              alacritty
+              wezterm
               kitty
               foot
               dev
@@ -101,7 +103,7 @@
               nixCats
             ] ++ homeConfiguration;
 
-          home.stateVersion = lib.mkForce "24.11";
+          home.stateVersion = lib.mkForce "24.05";
         };
 
         users.users.${userName} = {
@@ -126,6 +128,8 @@
                 }
                 paths
                 kitty
+                wezterm
+                alacritty
                 foot
                 dev
                 git
