@@ -40,7 +40,6 @@ in {
             nixfmt-classic
             lua-language-server
             nodePackages_latest.typescript-language-server
-            nodePackages_latest.live-server
             emmet-ls
             marksman
             jdt-language-server

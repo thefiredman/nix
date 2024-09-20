@@ -2,13 +2,6 @@
   _module.args = {
     darwinGenesis = architecture: hostName: extraModules:
       let
-        overlay-stable = final: prev: {
-          # stable = import inputs.nixpkgs-stable {
-          #   inherit architecture;
-          #   config.allowUnfree = true;
-          # };
-        };
-
         specialArgs = withSystem architecture
           ({ pkgs, inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nix-darwin.lib.darwinSystem {
@@ -17,7 +10,6 @@
         modules = [
           {
             nixpkgs = {
-              overlays = [ overlay-stable ];
               hostPlatform = architecture;
             };
 
@@ -39,13 +31,6 @@
 
     linuxGenesis = architecture: hostName: extraModules:
       let
-        overlay-stable = final: prev: {
-          # stable = import inputs.nixpkgs-stable {
-          #   inherit architecture;
-          #   config.allowUnfree = true;
-          # };
-        };
-
         specialArgs = withSystem architecture
           ({ inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nixpkgs.lib.nixosSystem {
@@ -53,7 +38,6 @@
         modules = [
           {
             nixpkgs = {
-              overlays = [ overlay-stable ];
               hostPlatform = architecture;
             };
             home-manager.extraSpecialArgs = specialArgs;
@@ -99,6 +83,7 @@
               lsd
               fuzzel
               river
+              hyprland
               scripts
               nixCats
             ] ++ homeConfiguration;
@@ -138,10 +123,10 @@
                 fd
                 fish
                 river
+                hyprland
                 fuzzel
                 lsd
                 xdg
-                chromium
                 scripts
                 nixCats
               ] ++ homeConfiguration;
@@ -153,7 +138,7 @@
           home = "${homePath}";
           isNormalUser = true;
           initialPassword = "boobs";
-          extraGroups = [ "wheel" "video" ];
+          extraGroups = [ "wheel" "video" "networkmanager" ];
         };
       };
   };

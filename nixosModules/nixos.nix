@@ -9,8 +9,10 @@
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
     shellAliases = {
-      upgrade = "sudo nixos-rebuild switch --flake ${config.genesis.nixConfigDir}";
-      bootgrade = "sudo nixos-rebuild build --flake ${config.genesis.nixConfigDir}";
+      upgrade =
+        "sudo nixos-rebuild switch --flake ${config.genesis.nixConfigDir}";
+      bootgrade =
+        "sudo nixos-rebuild build --flake ${config.genesis.nixConfigDir}";
       update = "nix flake update --flake ${config.genesis.nixConfigDir}";
     };
   };
@@ -63,11 +65,14 @@
   };
 
   networking = {
-    useNetworkd = true;
-    firewall.enable = true;
+    networkmanager.enable = true;
+    firewall.enable = false;
   };
 
-  environment.systemPackages = with pkgs; [ usbutils pciutils file ];
+  environment = {
+    systemPackages = with pkgs; [ usbutils pciutils file ];
+    persistence."/persist" = { directories = [ "/var/lib/NetworkManager/" "/var/lib/nixos/" ]; };
+  };
 
   hardware.pulseaudio.enable = lib.mkForce false;
   services = {

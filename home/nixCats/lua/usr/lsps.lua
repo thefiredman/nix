@@ -160,7 +160,7 @@ if M.enabled then
     settings = {},
   })
 
-  lspconfig.tsserver.setup({
+  lspconfig.ts_ls.setup({
     capabilities = M.capabilities,
     on_attach = M.on_attach,
     settings = {},

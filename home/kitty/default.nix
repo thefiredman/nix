@@ -26,8 +26,8 @@
             lib.getName config.h.shell.package
           }";
         background = "#000000";
-        # background_opacity = "0.87";
-        # background_blur = "20";
+        background_opacity = "0.87";
+        background_blur = "20";
         macos_option_as_alt = "yes";
         cursor_shape = "block";
         copy_on_select = "yes";

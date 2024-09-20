@@ -9,8 +9,7 @@
     };
 
   inputs = {
-    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -38,11 +37,6 @@
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    immich = {
-      url =
-        "github:jvanbruegge/nixpkgs/c0ee4c1770aa1ef998c977c4cc653a07ec95d9bf";
     };
   };
 }

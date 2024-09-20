@@ -21,7 +21,6 @@
       foot.enable = true;
       fuzzel.enable = true;
       kitty.enable = true;
-      chromium.enable = true;
     };
   };
 }

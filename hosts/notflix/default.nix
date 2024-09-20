@@ -3,10 +3,9 @@
     ./disko
     ./hardware.nix
     ./configuration.nix
-    ./services
-    ./tunnel.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.impermanence.nixosModules.impermanence
+    inputs.self.nixosModules.chromium
     (homeLinux "dashalev" [ ./home/dashalev.nix ])
   ];
 }

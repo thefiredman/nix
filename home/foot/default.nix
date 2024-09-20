@@ -20,7 +20,7 @@
         mouse = { hide-when-typing = "yes"; };
 
         colors = {
-          alpha = "0.9";
+          # alpha = "0.9";
           background = "000000";
           foreground = "ebdbb2";
           regular0 = "282828";
