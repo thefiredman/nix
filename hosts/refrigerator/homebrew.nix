@@ -11,7 +11,7 @@
       "affinity-photo"
       "figma"
       "eloston-chromium"
-      "iterm2"
+      "firefox"
     ];
   };
 }

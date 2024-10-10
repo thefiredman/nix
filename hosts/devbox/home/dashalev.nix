@@ -20,7 +20,7 @@
 
       foot.enable = true;
       fuzzel.enable = true;
-      kitty.enable = true;
+      kitty.enable = false;
     };
   };
 }
