@@ -2,13 +2,6 @@
   _module.args = {
     darwinGenesis = architecture: hostName: extraModules:
       let
-        overlay-stable = final: prev: {
-          # stable = import inputs.nixpkgs-stable {
-          #   inherit architecture;
-          #   config.allowUnfree = true;
-          # };
-        };
-
         specialArgs = withSystem architecture
           ({ pkgs, inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nix-darwin.lib.darwinSystem {
@@ -16,10 +9,7 @@
 
         modules = [
           {
-            nixpkgs = {
-              overlays = [ overlay-stable ];
-              hostPlatform = architecture;
-            };
+            nixpkgs = { hostPlatform = architecture; };
 
             home-manager.extraSpecialArgs = specialArgs;
           }
@@ -39,23 +29,13 @@
 
     linuxGenesis = architecture: hostName: extraModules:
       let
-        overlay-stable = final: prev: {
-          # stable = import inputs.nixpkgs-stable {
-          #   inherit architecture;
-          #   config.allowUnfree = true;
-          # };
-        };
-
         specialArgs = withSystem architecture
           ({ inputs', self', ... }: { inherit self' inputs' inputs; });
       in inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
           {
-            nixpkgs = {
-              overlays = [ overlay-stable ];
-              hostPlatform = architecture;
-            };
+            nixpkgs = { hostPlatform = architecture; };
             home-manager.extraSpecialArgs = specialArgs;
           }
 
@@ -63,6 +43,7 @@
           inputs.self.nixosModules.nixos
           inputs.self.nixosModules.genesis
           inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
 
           {
             genesis = {
@@ -99,6 +80,7 @@
               lsd
               fuzzel
               river
+              hyprland
               scripts
               nixCats
             ] ++ homeConfiguration;
@@ -138,10 +120,10 @@
                 fd
                 fish
                 river
+                hyprland
                 fuzzel
                 lsd
                 xdg
-                chromium
                 scripts
                 nixCats
               ] ++ homeConfiguration;
@@ -153,7 +135,7 @@
           home = "${homePath}";
           isNormalUser = true;
           initialPassword = "boobs";
-          extraGroups = [ "wheel" "video" ];
+          extraGroups = [ "wheel" "video" "networkmanager" ];
         };
       };
   };

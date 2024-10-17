@@ -4,13 +4,15 @@
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ];
-      imports = [ ./hosts ./nixosModules ./home ];
+      imports = [ ./hosts ./nixosModules ./home ./packages ];
       perSystem = { };
     };
 
   inputs = {
-    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # don't follow nixpkgs, it has it its own
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -38,11 +40,6 @@
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    immich = {
-      url =
-        "github:jvanbruegge/nixpkgs/c0ee4c1770aa1ef998c977c4cc653a07ec95d9bf";
     };
   };
 }

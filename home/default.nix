@@ -14,8 +14,8 @@
     bash = import ./bash;
     lsd = import ./lsd;
     river = import ./river;
+    hyprland = import ./hyprland;
     fuzzel = import ./fuzzel;
-    chromium = import ./chromium;
     xdg = import ./xdg;
     scripts = import ./scripts;
     nixCats = import ./nixCats;

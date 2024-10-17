@@ -33,6 +33,7 @@
       packages = with pkgs; [
         # editor
         zola
+        woff2
         ripgrep
         fd
         jq

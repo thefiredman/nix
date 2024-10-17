@@ -9,8 +9,10 @@
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
     shellAliases = {
-      upgrade = "sudo nixos-rebuild switch --flake ${config.genesis.nixConfigDir}";
-      bootgrade = "sudo nixos-rebuild build --flake ${config.genesis.nixConfigDir}";
+      upgrade =
+        "sudo nixos-rebuild switch --flake ${config.genesis.nixConfigDir}";
+      bootgrade =
+        "sudo nixos-rebuild build --flake ${config.genesis.nixConfigDir}";
       update = "nix flake update --flake ${config.genesis.nixConfigDir}";
     };
   };
@@ -63,15 +65,32 @@
   };
 
   networking = {
-    useNetworkd = true;
-    firewall.enable = true;
+    networkmanager.enable = true;
+    firewall.enable = false;
   };
 
-  environment.systemPackages = with pkgs; [ usbutils pciutils file ];
+  environment = {
+    systemPackages = with pkgs; [ usbutils pciutils file ffmpeg ];
+    persistence."/persist" = {
+      hideMounts = true;
+      directories =
+        [ "/var/lib/NetworkManager/" "/var/lib/bluetooth/" "/etc/NetworkManager/" "/var/lib/nixos/" ];
+    };
+  };
 
-  hardware.pulseaudio.enable = lib.mkForce false;
+  hardware = {
+    pulseaudio.enable = lib.mkForce false;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    xpadneo.enable = true;
+  };
+
   services = {
+    blueman.enable = true;
     dbus.implementation = "broker";
+    udisks2.enable = true;
     openssh.enable = true;
     rsyncd.enable = true;
   };

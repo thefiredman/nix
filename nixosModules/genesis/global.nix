@@ -1,10 +1,11 @@
-{ inputs, config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   environment = {
     systemPackages = with pkgs; [
       wget
       rsync
       unzip
       p7zip
+      zip
       tree
       vimv
       onefetch
@@ -31,14 +32,11 @@
 
   networking = { inherit (config.genesis) hostName; };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkForce true;
   nix = {
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = lib.singleton config.nix.settings.nix-path;
-
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      nix-path = "nixpkgs=flake:nixpkgs";
+      nix-path = lib.mkForce "nixpkgs=flake:nixpkgs";
       builders-use-substitutes = true;
       http-connections = 0;
       max-substitution-jobs = 128;

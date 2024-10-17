@@ -5,6 +5,7 @@
     };
   };
 
-  config =
-    lib.mkIf config.h.alacritty.enable { programs.alacritty = { enable = true; }; };
+  config = lib.mkIf config.h.alacritty.enable {
+    programs.alacritty = { enable = true; };
+  };
 }

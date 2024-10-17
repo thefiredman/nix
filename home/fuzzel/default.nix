@@ -14,14 +14,15 @@
         };
 
         colors = {
-          background = "101010ff";
+          background = "000000ff";
           text = "ffffffff";
           selection = "00000000";
           selection-text = "b16286ff";
+          border = "ffffffff";
         };
 
         border = {
-          width = "0";
+          width = "2";
         };
       };
     };

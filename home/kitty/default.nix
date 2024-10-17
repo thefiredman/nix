@@ -12,8 +12,8 @@
         name = "CaskaydiaCove Nerd Font Mono";
         size = 30;
       };
-      theme = "Gruvbox Dark Hard";
-      darwinLaunchOptions = [ "--single-instance" ];
+      themeFile = "GruvboxMaterialDarkHard";
+      # darwinLaunchOptions = [ "--single-instance" ];
       shellIntegration = {
         enableFishIntegration = false;
         enableZshIntegration = false;

@@ -22,7 +22,7 @@ in {
     nixCats = {
       enable = true;
       addOverlays = [ (utils.standardPluginOverlay inputs) ];
-      packageNames = [ "nvim" "cutevim" ];
+      packageNames = [ "nvim" ];
 
       luaPath = "${./.}";
       categoryDefinitions.replace = { pkgs, settings, categories, name, ... }: {
@@ -40,7 +40,6 @@ in {
             nixfmt-classic
             lua-language-server
             nodePackages_latest.typescript-language-server
-            nodePackages_latest.live-server
             emmet-ls
             marksman
             jdt-language-server
@@ -121,14 +120,14 @@ in {
           };
         };
 
-        cutevim = { pkgs, ... }: {
-          settings = { wrapRc = true; };
-
-          categories = {
-            general = true;
-            lsps-enabled = false;
-          };
-        };
+        # cutevim = { pkgs, ... }: {
+        #   settings = { wrapRc = true; };
+        #
+        #   categories = {
+        #     general = true;
+        #     lsps-enabled = false;
+        #   };
+        # };
       };
     };
   };

@@ -4,8 +4,8 @@
       ./configuration.nix
       ./scripts.nix
       ./homebrew.nix
-      ./yabai.nix
+      # ./yabai.nix
       ./skhd.nix
-      (homeDarwin "aarch64-darwin" "shalev" [ ./Users/dashalev.nix ])
+      (homeDarwin "aarch64-darwin" "dashalev" [ ./Users/dashalev.nix ])
     ];
 }

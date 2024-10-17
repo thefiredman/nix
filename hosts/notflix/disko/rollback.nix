@@ -36,9 +36,15 @@ in {
   config = lib.mkIf cfg.enable {
     boot = {
       tmp.cleanOnBoot = true;
-      kernelPackages = lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages;
       kernelParams = [ "usbcore.autosuspend=-1" ];
+      zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
+      kernelPackages = pkgs.linuxPackages_cachyos;
     };
+
+      chaotic.scx = {
+        enable = true;
+        scheduler = "scx_bpfland";
+      };
 
     networking.hostId = lib.mkForce "9a603c0e";
 
