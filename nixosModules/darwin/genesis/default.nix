@@ -54,9 +54,8 @@
                 scripts
                 nixCats
               ] ++ homeConfiguration;
+            home.stateVersion = "25.05";
           };
-
-          home.stateVersion = "25.05";
         };
 
         users.users.${userName} = {

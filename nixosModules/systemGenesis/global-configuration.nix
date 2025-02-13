@@ -8,5 +8,4 @@
 { lib, config, ... }: {
   # LMAO
   networking = { inherit (config.systemGenesis) hostName; };
-  time.timeZone = lib.mkDefault "Canada/Eastern";
 }

@@ -9,6 +9,7 @@
       prismlauncher
       airshipper
       brave
+      firefox
       signal-desktop
       vesktop
       torzu

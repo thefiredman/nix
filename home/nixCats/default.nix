@@ -37,13 +37,14 @@ in {
             stdenv.cc.cc
             vscode-langservers-extracted
             nil
-            nixpkgs-fmt
             nixfmt-classic
             lua-language-server
             tailwindcss-language-server
             nodePackages_latest.typescript-language-server
             nodePackages_latest."@astrojs/language-server"
             emmet-ls
+
+            # school is the reason I have this garbage
             jdt-language-server
             pyright
             php83Packages.psalm
@@ -54,18 +55,14 @@ in {
             dotnet-sdk_8
 
             # fmt + linter
-            nodePackages_latest.prettier
             deadnix
             statix
             editorconfig-checker
             ruff
             mypy
-            shellcheck
             jq
             yq
-            typstfmt
             shfmt
-            stylua
           ];
         };
 

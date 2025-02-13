@@ -1,5 +1,6 @@
-{ lib, config, ... }: {
+{ pkgs, lib, config, ... }: {
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       extra-experimental-features = [
         "nix-command"
